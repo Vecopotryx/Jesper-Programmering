@@ -18,13 +18,32 @@ public class Main {
         System.out.print("Vad är din address? ");
         String address = input.next();
 
+        input.nextLine(); // denna linjen behövs tydligen, om jag inte har denna här så skippar den Scanner delen för adressen.
+
         System.out.print("Vad är ditt postnummer? ");
         String postalCode = input.next();
+
+        input.nextLine(); // samma sak som ovan, den ignorerar en Scanner annars.
 
         System.out.print("Vilken stad bor du i? ");
         String city = input.next();
 
         getPhone();
+
+        // ta bort extra spaces.
+        name = name.trim();
+        address = address.trim();
+        postalCode = postalCode.trim();
+        city = city.trim();
+
+        // Detta nedan skriver ut informationen.
+        System.out.println();
+        System.out.println("Information:");
+        System.out.println("Namn:     " + name);
+        System.out.println("Ålder:    " + age);
+        System.out.println("Address:  " + address);
+        System.out.println("          " + postalCode + " " + city);
+        System.out.println("Telefon   " + phone);
 
     }
 
