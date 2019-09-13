@@ -6,12 +6,23 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        // Definerar input som en ny Scanner.
 
         System.out.print("Vad är ditt namn? ");
-        String namn = input.next();
+        String name = input.nextLine();
 
-        System.out.println(namn);
+        byte age = 0; // definera age
+
+        try {
+            System.out.print("Hur gammal är du? ");
+            age = input.nextByte();
+        }
+        catch(Exception e) {
+            System.out.println("Ange något rimligt värde...");
+        }
+
+
+        System.out.println(name);
+        System.out.println(age);
 
 
     }
