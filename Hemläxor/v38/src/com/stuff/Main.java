@@ -13,5 +13,8 @@ public class Main {
             nummer[i] = input.nextInt();
         }
         System.out.println(Arrays.toString(nummer));
+
+        int min = Arrays.stream(nummer).min().getAsInt();
+        System.out.println("Lägst: " + min);
     }
 }
