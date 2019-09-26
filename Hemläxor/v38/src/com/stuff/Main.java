@@ -22,7 +22,6 @@ public class Main {
 
         // results
         System.out.println("--------------------------"); // for aesthetic reasons
-
         System.out.println(Arrays.toString(numbers));
         System.out.println("Högst: " + max);
         System.out.println("Lägst: " + min);
