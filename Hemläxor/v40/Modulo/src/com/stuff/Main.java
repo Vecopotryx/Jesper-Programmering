@@ -12,14 +12,11 @@ public class Main {
         for(int i = 0; i < 10; i++) {
             numbers[i] = input.nextInt();
         }
-        System.out.println(Arrays.toString(numbers));
         int[] modulus = new int[10];
         for(int i = 0; i < 10; i++) {
             modulus[i] = numbers[i]%42;
         }
 
-
-        System.out.println(Arrays.toString(modulus));
         int distinct = 0;
         top:
         for (int i = 0; i < 10; i++) {
@@ -29,8 +26,6 @@ public class Main {
             }
             distinct++;
         }
-
-
         System.out.println(distinct);
     }
 }
