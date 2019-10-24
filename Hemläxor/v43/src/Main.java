@@ -4,6 +4,7 @@ public class Main {
         volume(1);
         reverse("Hello");
         count("Hello", 'l');
+        sjorovare("Hej på dig där");
 
     }
 
@@ -47,6 +48,16 @@ public class Main {
         return count;
     }
 
-    
+    public static String sjorovare(String str){
+        String returnSentence = "";
+        for(int i=0; i < str.length(); i++) {
+            if (!(str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u')) {
+                returnSentence += str.charAt(i);
+            } else
+                returnSentence += "o";
+        }
+        System.out.println(returnSentence);
+        return str;
+    }
 }
 
