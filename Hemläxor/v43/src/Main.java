@@ -4,7 +4,7 @@ public class Main {
         volume(1);
         reverse("Hello");
         count("Hello", 'l');
-        sjorovare("Hej på dig där");
+        sjorovare("Test");
 
     }
 
@@ -48,16 +48,21 @@ public class Main {
         return count;
     }
 
+    /**
+     *
+     * @param str Sentence input
+     * @return Returns the input but messed up.
+     */
     public static String sjorovare(String str){
         String returnSentence = "";
         for(int i=0; i < str.length(); i++) {
-            if (!(str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u')) {
-                returnSentence += str.charAt(i);
+            if (!(str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u' || str.charAt(i) == ' ' || str.charAt(i) == 'å' || str.charAt(i) == 'ä'|| str.charAt(i) == 'ö' )){
+                returnSentence +=  str.charAt(i) + "o" + str.charAt(i);
             } else
-                returnSentence += "o";
+                returnSentence +=  str.charAt(i);
+
         }
-        System.out.println(returnSentence);
-        return str;
+        return returnSentence.toLowerCase();
     }
 }
 
