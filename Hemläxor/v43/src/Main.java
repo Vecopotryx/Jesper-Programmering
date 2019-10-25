@@ -1,10 +1,10 @@
 public class Main {
 
     public static void main(String[] args) {
-        volume(1);
-        reverse("Hello");
-        count("Hello", 'l');
-        sjorovare("Test");
+        System.out.println(volume(1));
+        System.out.println(reverse("Hello"));
+        System.out.println(count("Hello", 'l'));
+        System.out.println(sjorovare("Test"));
 
     }
 
@@ -54,13 +54,16 @@ public class Main {
      * @return Returns the input but messed up.
      */
     public static String sjorovare(String str){
+        String consonants = "BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz";
         String returnSentence = "";
-        for(int i=0; i < str.length(); i++) {
-            if (!(str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u' || str.charAt(i) == ' ' || str.charAt(i) == 'å' || str.charAt(i) == 'ä'|| str.charAt(i) == 'ö' )){
-                returnSentence +=  str.charAt(i) + "o" + str.charAt(i);
-            } else
-                returnSentence +=  str.charAt(i);
 
+        for(int i = 0; i < str.length(); i++){
+            for(int j = 0; j < consonants.length(); j++) {
+                if (str.charAt(i) == consonants.charAt(j)) {
+                    returnSentence += str.charAt(i) + "o";
+                }
+            }
+            returnSentence += str.charAt(i);
         }
         return returnSentence.toLowerCase();
     }
