@@ -7,6 +7,10 @@ public class Main {
     static double c = 2.99792458E8; // Speed of light in a vacuum (m/s)
 
     public static void main(String[] args) {
-        // Hi there :)
+        System.out.println(fahrenheitToCelsius(50));
+    }
+
+    public static double fahrenheitToCelsius(double fahrenheit) {
+        return (fahrenheit - 32)/1.8;
     }
 }
