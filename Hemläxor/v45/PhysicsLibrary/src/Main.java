@@ -8,9 +8,14 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(fahrenheitToCelsius(50));
+        System.out.println(kelvinToCelsius(0));
     }
 
     public static double fahrenheitToCelsius(double fahrenheit) {
         return (fahrenheit - 32)/1.8;
+    }
+
+    public static double kelvinToCelsius(double kelvin) {
+        return (kelvin - 273.15);
     }
 }
