@@ -1,5 +1,3 @@
-package enums;
-
 public enum GasTable{
 
 	AIR(1.29, 1.01), 

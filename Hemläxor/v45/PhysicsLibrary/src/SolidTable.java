@@ -1,5 +1,3 @@
-package enums;
-
 public enum SolidTable {
 
 	ICE(0.92, 2.2, 0, 334),
