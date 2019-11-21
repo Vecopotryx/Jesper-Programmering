@@ -12,19 +12,40 @@ public class Main {
         System.out.println(fluidPressure(FluidTable.WATER, 10));
         System.out.println(pressureUnderWater(10));
     }
-    
+
+    /**
+     *
+     * @param fahrenheit Temperature in Fahrenheit
+     * @return Returns the temperature in Celsius
+     */
     public static double fahrenheitToCelsius(double fahrenheit) {
         return (fahrenheit - 32)/1.8;
     }
 
+    /**
+     *
+     * @param kelvin
+     * @return
+     */
     public static double kelvinToCelsius(double kelvin) {
         return (kelvin - 273.15);
     }
 
+    /**
+     *
+     * @param fluid
+     * @param deep
+     * @return
+     */
     public static double fluidPressure(FluidTable fluid, double deep) {
         return (fluid.density * g_swe * deep);
     }
 
+    /**
+     *
+     * @param deep
+     * @return
+     */
     public static double pressureUnderWater(double deep) {
         return (FluidTable.WATER.density * g_swe * deep);
     }
