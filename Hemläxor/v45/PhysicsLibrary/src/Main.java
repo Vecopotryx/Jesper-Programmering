@@ -11,6 +11,9 @@ public class Main {
         System.out.println(kelvinToCelsius(0));
         System.out.println(fluidPressure(FluidTable.WATER, 10));
         System.out.println(pressureUnderWater(10));
+        System.out.println(kineticEnergy(2,2));
+        System.out.println(potentialEnergy(2,5));
+
     }
 
     /**
@@ -51,12 +54,22 @@ public class Main {
     }
 
     /**
-     * Calculates the kinetic energy using a specified mass and velocity.
+     * Calculates the kinetic energy of an object using a specified mass and velocity.
      * @param mass Mass of specified object
      * @param velocity Velocity of specified object
      * @return Returns the kinetic energy
      */
     public static double kineticEnergy(double mass, double velocity) {
         return (mass * velocity * velocity)/2;
+    }
+
+    /**
+     * Calculates potential energy of an object using specified mass and height
+     * @param mass Mass of specified object
+     * @param height Height of specified object
+     * @return Returns the potential energy of specified object
+     */
+    public static double potentialEnergy(double mass, double height) {
+        return (mass * g_swe * height);
     }
 }
