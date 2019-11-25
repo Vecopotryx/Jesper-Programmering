@@ -32,7 +32,7 @@ public class Main {
     }
 
     /**
-     * Calculates the fluid pressure of specified fluid at a certain depth.
+     * Calculates the fluid pressure of specified fluid at a specifiedd depth.
      * @param fluid Specified fluid from enum
      * @param deep which depth to calculate pressure at.
      * @return Returns the fluid pressure.
@@ -42,9 +42,9 @@ public class Main {
     }
 
     /**
-     *
-     * @param deep
-     * @return
+     * Calculates the pressure under water at specified depth
+     * @param deep The depth to calculate pressure at.
+     * @return Returns the pressure under water at specified depth
      */
     public static double pressureUnderWater(double deep) {
         return (FluidTable.WATER.density * g_swe * deep);
