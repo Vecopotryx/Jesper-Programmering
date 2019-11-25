@@ -14,8 +14,8 @@ public class Main {
     }
 
     /**
-     *
-     * @param fahrenheit Temperature in Fahrenheit
+     * Converts input value from Fahrenheit to Celsius.
+     * @param fahrenheit Temperature input in Fahrenheit
      * @return Returns the temperature in Celsius
      */
     public static double fahrenheitToCelsius(double fahrenheit) {
@@ -23,19 +23,19 @@ public class Main {
     }
 
     /**
-     *
-     * @param kelvin
-     * @return
+     * Converts input value from Kelvin to Celsius
+     * @param kelvin Temperature input in Kelvin
+     * @return Returns the temperature in Celsius
      */
     public static double kelvinToCelsius(double kelvin) {
         return (kelvin - 273.15);
     }
 
     /**
-     *
-     * @param fluid
-     * @param deep
-     * @return
+     * Calculates the fluid pressure of specified fluid at a certain depth.
+     * @param fluid Specified fluid from enum
+     * @param deep which depth to calculate pressure at.
+     * @return Returns the fluid pressure.
      */
     public static double fluidPressure(FluidTable fluid, double deep) {
         return (fluid.density * g_swe * deep);
