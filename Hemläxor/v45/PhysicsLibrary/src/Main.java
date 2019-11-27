@@ -13,7 +13,7 @@ public class Main {
         System.out.println(pressureUnderWater(10));
         System.out.println(kineticEnergy(2,2));
         System.out.println(potentialEnergy(2,5));
-
+        System.out.println(fallSpeed(2.5));
     }
 
     /**
@@ -60,7 +60,7 @@ public class Main {
      * @return Returns the kinetic energy
      */
     public static double kineticEnergy(double mass, double velocity) {
-        return (mass * velocity * velocity)/2;
+        return (mass * Math.pow(velocity, 2))/2;
     }
 
     /**
@@ -71,5 +71,15 @@ public class Main {
      */
     public static double potentialEnergy(double mass, double height) {
         return (mass * g_swe * height);
+    }
+
+    /**
+     * Calculates the speed that a falling object will reach just before hitting the ground after being dropped from a
+     * specified height.
+     * @param height The height that the object would be dropped from.
+     * @return Returns the speed of the object.
+     */
+    public static double fallSpeed(double height) {
+        return Math.sqrt(2*height*g_swe);
     }
 }
