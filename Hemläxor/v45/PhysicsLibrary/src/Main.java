@@ -14,6 +14,7 @@ public class Main {
         System.out.println(kineticEnergy(2,2));
         System.out.println(potentialEnergy(2,5));
         System.out.println(fallSpeed(2.5));
+        System.out.println(delta(1,10));
     }
 
     /**
@@ -81,5 +82,15 @@ public class Main {
      */
     public static double fallSpeed(double height) {
         return Math.sqrt(2*height*g_swe);
+    }
+
+    /**
+     * Calculates the difference between two given values.
+     * @param first First value
+     * @param last Second value
+     * @return Returns the difference between the two given values.
+     */
+    public static double delta(double first, double last) {
+        return last - first;
     }
 }
