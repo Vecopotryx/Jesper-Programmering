@@ -17,6 +17,7 @@ public class Main {
         System.out.println(delta(1,10));
         System.out.println(volumeToMass(FluidTable.WATER,1));
         System.out.println(volumeToMass(GasTable.AIR,1));
+        System.out.println(volumeToMass(SolidTable.IRON,1));
     }
 
     /**
@@ -97,7 +98,7 @@ public class Main {
     }
 
     /**
-     * Calculates the mass of the volume of a specified fluid.
+     * Calculates the mass of a specified volume of a specified fluid.
      * @param fluid Specified fluid from enum
      * @param volume Volume of fluid
      * @return Returns the mass of the fluid.
@@ -107,12 +108,22 @@ public class Main {
     }
 
     /**
-     * Calculates the mass of the volume of a specified gas.
+     * Calculates the mass of a specified volume of a specified gas.
      * @param gas Specified gas from enum
      * @param volume Volume of gas
      * @return Returns the mass of the gas.
      */
     public static double volumeToMass(GasTable gas, double volume) {
         return gas.density * volume;
+    }
+
+    /**
+     * Calculates the mass of a specified volume of a specified solid.
+     * @param solid Specified solid from enum
+     * @param volume Volume of solid
+     * @return Returns the mass of the solid.
+     */
+    public static double volumeToMass(SolidTable solid, double volume) {
+        return solid.density * volume;
     }
 }
