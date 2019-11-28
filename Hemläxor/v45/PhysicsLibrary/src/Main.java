@@ -15,6 +15,7 @@ public class Main {
         System.out.println(potentialEnergy(2,5));
         System.out.println(fallSpeed(2.5));
         System.out.println(delta(1,10));
+        System.out.println(volumeToMass(FluidTable.WATER,1));
     }
 
     /**
@@ -93,4 +94,16 @@ public class Main {
     public static double delta(double first, double last) {
         return last - first;
     }
+
+    /**
+     * Calculates the mass of the volume of a specified fluid.
+     * @param fluid Specified fluid from enum
+     * @param volume Fluid volume
+     * @return Returns the mass of the fluid.
+     */
+    public static double volumeToMass(FluidTable fluid, double volume) {
+        return fluid.density * volume;
+    }
+
+    public static double    
 }
