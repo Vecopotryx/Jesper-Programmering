@@ -18,21 +18,22 @@ public class Main {
         System.out.println(volumeToMass(FluidTable.WATER,1));
         System.out.println(volumeToMass(GasTable.AIR,1));
         System.out.println(volumeToMass(SolidTable.IRON,1));
+        System.out.println(svtVelocity(10,5));
     }
 
     /**
      * Converts input value from Fahrenheit to Celsius.
-     * @param fahrenheit Temperature input in Fahrenheit
-     * @return Returns the temperature in Celsius
+     * @param fahrenheit Temperature input in Fahrenheit.
+     * @return Returns the temperature in Celsius.
      */
     public static double fahrenheitToCelsius(double fahrenheit) {
         return (fahrenheit - 32)/1.8;
     }
 
     /**
-     * Converts input value from Kelvin to Celsius
-     * @param kelvin Temperature input in Kelvin
-     * @return Returns the temperature in Celsius
+     * Converts input value from Kelvin to Celsius.
+     * @param kelvin Temperature input in Kelvin.
+     * @return Returns the temperature in Celsius.
      */
     public static double kelvinToCelsius(double kelvin) {
         return (kelvin - 273.15);
@@ -40,7 +41,7 @@ public class Main {
 
     /**
      * Calculates the fluid pressure of specified fluid at a specifiedd depth.
-     * @param fluid Specified fluid from enum
+     * @param fluid Specified fluid from enum.
      * @param deep which depth to calculate pressure at.
      * @return Returns the fluid pressure.
      */
@@ -49,9 +50,9 @@ public class Main {
     }
 
     /**
-     * Calculates the pressure under water at specified depth
+     * Calculates the pressure under water at specified depth.
      * @param deep The depth to calculate pressure at.
-     * @return Returns the pressure under water at specified depth
+     * @return Returns the pressure under water at specified depth.
      */
     public static double pressureUnderWater(double deep) {
         return (FluidTable.WATER.density * g_swe * deep);
@@ -59,19 +60,19 @@ public class Main {
 
     /**
      * Calculates the kinetic energy of an object using a specified mass and velocity.
-     * @param mass Mass of specified object
-     * @param velocity Velocity of specified object
-     * @return Returns the kinetic energy
+     * @param mass Mass of specified object.
+     * @param velocity Velocity of specified object.
+     * @return Returns the kinetic energy.
      */
     public static double kineticEnergy(double mass, double velocity) {
         return (mass * Math.pow(velocity, 2))/2;
     }
 
     /**
-     * Calculates potential energy of an object using specified mass and height
-     * @param mass Mass of specified object
-     * @param height Height of specified object
-     * @return Returns the potential energy of specified object
+     * Calculates potential energy of an object using specified mass and height.
+     * @param mass Mass of specified object.
+     * @param height Height of specified object.
+     * @return Returns the potential energy of specified object.
      */
     public static double potentialEnergy(double mass, double height) {
         return (mass * g_swe * height);
@@ -89,8 +90,8 @@ public class Main {
 
     /**
      * Calculates the difference between two given values.
-     * @param first First value
-     * @param last Second value
+     * @param first First value.
+     * @param last Second value.
      * @return Returns the difference between the two given values.
      */
     public static double delta(double first, double last) {
@@ -99,8 +100,8 @@ public class Main {
 
     /**
      * Calculates the mass of a specified volume of a specified fluid.
-     * @param fluid Specified fluid from enum
-     * @param volume Volume of fluid
+     * @param fluid Specified fluid from enum.
+     * @param volume Volume of fluid.
      * @return Returns the mass of the fluid.
      */
     public static double volumeToMass(FluidTable fluid, double volume) {
@@ -109,8 +110,8 @@ public class Main {
 
     /**
      * Calculates the mass of a specified volume of a specified gas.
-     * @param gas Specified gas from enum
-     * @param volume Volume of gas
+     * @param gas Specified gas from enum.
+     * @param volume Volume of gas.
      * @return Returns the mass of the gas.
      */
     public static double volumeToMass(GasTable gas, double volume) {
@@ -119,11 +120,21 @@ public class Main {
 
     /**
      * Calculates the mass of a specified volume of a specified solid.
-     * @param solid Specified solid from enum
-     * @param volume Volume of solid
+     * @param solid Specified solid from enum.
+     * @param volume Volume of solid.
      * @return Returns the mass of the solid.
      */
     public static double volumeToMass(SolidTable solid, double volume) {
         return solid.density * volume;
+    }
+
+    /**
+     * Calculates the average velocity of an object using distance and time.
+     * @param distance Specified distance traveled.
+     * @param time The amount of time that it took to travel specified distance.
+     * @return Returns the average velocity.
+     */
+    public static double svtVelocity(double distance, double time) {
+        return distance / time;
     }
 }
