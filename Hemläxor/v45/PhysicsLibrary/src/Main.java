@@ -20,6 +20,7 @@ public class Main {
         System.out.println(volumeToMass(SolidTable.IRON,1));
         System.out.println(svtVelocity(10,5));
         System.out.println(svtDistance(10,5));
+        System.out.println(svtTime(10,2));
     }
 
     /**
@@ -147,5 +148,15 @@ public class Main {
      */
     public static double svtDistance(double velocity, double time) {
         return velocity * time;
+    }
+
+    /**
+     * Calculates the time that it takes to travel a specified distance at a specified velocity.
+     * @param distance Distance traveled.
+     * @param velocity The velocity of the object.
+     * @return Returns the time that it takes to travel a specified distance at a specified velocity.
+     */
+    public static double svtTime(double distance, double velocity) {
+        return distance / velocity;
     }
 }
