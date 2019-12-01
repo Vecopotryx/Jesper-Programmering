@@ -228,4 +228,14 @@ public class Main {
     public static double velocityToHeight(double velocity) {
         return Math.pow(velocity, 2) / (2*g_swe); // using formula H = V^2 / 2g
     }
+
+    /**
+     * Calculates density using mass and volume.
+     * @param mass The mass to calculate density of.
+     * @param volume The volume of the mass.
+     * @return Returns the density.
+     */
+    public static double density(double mass, double volume) {
+        return mass / volume;
+    }
 }
