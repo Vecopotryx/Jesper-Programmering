@@ -318,4 +318,14 @@ public class Main {
     public static double velocityAfterAcceleration(double originVelocity, double acceleration, double time) {
         return originVelocity + (acceleration * time);
     }
+
+    /**
+     * Calculates the work required to lift an object with a certain mass to a certain height.
+     * @param mass The mass of the object.
+     * @param height The height that the object will be elevated to.
+     * @return Returns the work required.
+     */
+    public static double workHeight(double mass, double height) {
+        return mass * g_swe * height;
+    }
 }
