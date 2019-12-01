@@ -307,4 +307,15 @@ public class Main {
     public static double force(double mass, double acceleration) {
         return mass * acceleration;
     }
+
+    /**
+     * Calculates velocity after a constant acceleration.
+     * @param originVelocity The velocity before acceleration.
+     * @param acceleration The acceleration of the object.
+     * @param time The time spent accelerating.
+     * @return Returns velocity after the acceleration.
+     */
+    public static double velocityAfterAcceleration(double originVelocity, double acceleration, double time) {
+        return originVelocity + (acceleration * time);
+    }
 }
