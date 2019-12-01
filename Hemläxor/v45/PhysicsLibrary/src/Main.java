@@ -266,4 +266,14 @@ public class Main {
     public static double momentum(double mass, double velocity) {
         return mass * velocity;
     }
+
+    /**
+     * Calculates the impulse of a object under a constant force during a specified time.
+     * @param force The constant force on the object.
+     * @param deltaT The difference in time.
+     * @return Returns the impulse of the object.
+     */
+    public static double impulse(double force, double deltaT) {
+        return force * deltaT;
+    }
 }
