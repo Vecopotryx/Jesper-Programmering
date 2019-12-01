@@ -4,7 +4,12 @@ public enum GasTable{
 	O2(1.43, 0.92), 
 	OXYGEN(1.43, 0.92),
 	XENON(5.89,0.16),
-	CYANOGEN(2.32,1.71)
+	CYANOGEN(2.32,1.71),
+	NEON(0.900,1.03),
+	HYDROGEN(0.0899,14.2),
+	NITROGEN(1.250,1.04),
+	HELIUM(0.178,5.2),
+	CO2(1.98,0.82)
 	;
 
 	double density;
