@@ -13,7 +13,7 @@ public class Main {
         System.out.println(volumeToMass(SolidTable.IRON,30) + " kg");
         System.out.println("2. If someone runs at an average of 2.7 m/s for 50 minutes they will have traveled approximately: ");
         System.out.println(svtDistance(2.7, 50*60) + " meters");
-        System.out.println("3. The energy required to heat 4 liters of water from 22 degrees celsius to boiling is");
+        System.out.println("3. The energy required to heat 4 liters of water from 22 degrees celsius to boiling is: ");
         System.out.println(heat(FluidTable.WATER, volumeToMass(FluidTable.WATER, 4), FluidTable.WATER.boilPoint-22) + " joules");
         System.out.println("4. The total pressure 75 meters below sea level is: ");
         System.out.println(pressureUnderWater(75) + " pascal");
@@ -21,6 +21,8 @@ public class Main {
         System.out.println(velocityToHeight(kmPerHourToMetersPerSecond(60)) + " meters");
         System.out.println("6. The power of an engine in an car with the mass 735 kg that has a constant acceleration and does 0-100 in 4.8 seconds will have reached: ");
         System.out.println(power(work(force(735, acceleration(kmPerHourToMetersPerSecond(100), 4.8)), distance(4.8, acceleration(kmPerHourToMetersPerSecond(100), 4.8))), 4.8) + " watt");
+        System.out.println("7. A ball weighing 1kg that is dropped from 12 meters and that looses 1% of it's energy for every bounce will be able to bounce ");
+        System.out.println(bounceCount(1,12) + " times before not being able to bounce to above 0.5 meters");
     }
 
     /**
@@ -342,5 +344,19 @@ public class Main {
     public static double distance(double time, double acceleration) {
         double distance = (acceleration * Math.pow(time, 2)) / 2;
         return distance;
+    }
+
+    public static double bounceCount(double mass, double height) {
+        double energy = potentialEnergy(mass, height);
+        int bounces = 0;
+        double i = height;
+
+        while(i >= 0.5) {
+            energy *= 0.99;
+            i = energy / g_swe;
+            bounces++;
+        }
+
+        return bounces;
     }
 }
