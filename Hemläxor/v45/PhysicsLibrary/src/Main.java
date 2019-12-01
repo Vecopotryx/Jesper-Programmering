@@ -351,6 +351,14 @@ public class Main {
         return (acceleration * Math.pow(time, 2)) / 2;
     }
 
+    /**
+     * Calculates amount of bounces a ball dropped from a certain height and loosing a certain amount of energy for every bounce will be able to do before not being able to go above a certain height.
+     * @param mass The mass of the ball.
+     * @param height The height that the ball is dropped from.
+     * @param heightLimit The height at which to stop counting.
+     * @param energyLoss The energy loss for every bounce.
+     * @return Returns how many times the ball will be able to be bounce.
+     */
     public static double bounceCount(double mass, double height, double heightLimit, double energyLoss) {
         double energy = potentialEnergy(mass, height);
         int bounces = 0;
