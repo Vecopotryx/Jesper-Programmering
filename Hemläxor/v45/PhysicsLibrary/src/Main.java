@@ -6,13 +6,20 @@ public class Main {
     static double p_0 = 1013.25; // Atmospheric pressure at sea-level (hPa)
     static double c = 2.99792458E8; // Speed of light in a vacuum (m/s)
 
+    // All of the data in this assignment is determined with SI-units.
+    // Air resistance is neglected in all methods.
     public static void main(String[] args) {
         System.out.println("1. 60 liters of iron weighs: ");
         System.out.println(volumeToMass(SolidTable.IRON,30) + " kg");
         System.out.println("2. If someone runs at an average of 2.7 m/s for 50 minutes they will have traveled approximately: ");
         System.out.println(svtDistance(2.7, 50*60) + " meters");
         System.out.println("3. The energy required to heat 4 liters of water from 22 degrees celsius to boiling is");
-        System.out.println(heat(FluidTable.WATER, volumeToMass(FluidTable.WATER, 4), FluidTable.WATER.boilPoint-22) + " joules");   
+        System.out.println(heat(FluidTable.WATER, volumeToMass(FluidTable.WATER, 4), FluidTable.WATER.boilPoint-22) + " joules");
+        System.out.println("4. The total pressure 75 meters below sea level is: ");
+        System.out.println(pressureUnderWater(75) + " pascal");
+        System.out.println("5. A ball weighing 250 grams that is thrown straight up at a speed of 60 km/h will reach a maximum height of: ");
+        System.out.println(velocityToHeight(kmPerHourToMetersPerSecond(60)) + " meters");
+
     }
 
     /**
