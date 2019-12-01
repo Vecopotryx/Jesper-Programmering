@@ -19,7 +19,8 @@ public class Main {
         System.out.println(pressureUnderWater(75) + " pascal");
         System.out.println("5. A ball weighing 250 grams that is thrown straight up at a speed of 60 km/h will reach a maximum height of: ");
         System.out.println(velocityToHeight(kmPerHourToMetersPerSecond(60)) + " meters");
-
+        System.out.println("6. The power of an engine in an car with the mass 735 kg that has a constant acceleration and does 0-100 in 4.8 seconds will have reached: ");
+        System.out.println(power(work(force(735, acceleration(kmPerHourToMetersPerSecond(100), 4.8)), distance(4.8, acceleration(kmPerHourToMetersPerSecond(100), 4.8))), 4.8) + " watt");
     }
 
     /**
@@ -320,5 +321,26 @@ public class Main {
      */
     public static double workHeight(double mass, double height) {
         return mass * g_swe * height;
+    }
+
+    /**
+     * Calculates acceleration using difference in velocity and difference in time.
+     * @param deltaV Difference in velocity.
+     * @param deltaT Difference in time.
+     * @return Returns the acceleration.
+     */
+    public static double acceleration(double deltaV, double deltaT) {
+        return deltaV / deltaT;
+    }
+
+    /**
+     * Calculates distance traveled using acceleration and time.
+     * @param time The time spent accelerating.
+     * @param acceleration The speed of which the object is accelerating at.
+     * @return Returns the distance traveled.
+     */
+    public static double distance(double time, double acceleration) {
+        double distance = (acceleration * Math.pow(time, 2)) / 2;
+        return distance;
     }
 }
