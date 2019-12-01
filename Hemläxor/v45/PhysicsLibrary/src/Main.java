@@ -21,6 +21,7 @@ public class Main {
         System.out.println(svtVelocity(10,5));
         System.out.println(svtDistance(10,5));
         System.out.println(svtTime(10,2));
+        System.out.println(work(50,10));
     }
 
     /**
@@ -159,4 +160,15 @@ public class Main {
     public static double svtTime(double distance, double velocity) {
         return distance / velocity;
     }
+
+    /**
+     * Calculates work using force and distance.
+     * @param force Specified force.
+     * @param distance The distance traveled.
+     * @return Returns the work for specified force and distance.
+     */
+    public static double work(double force, double distance) {
+        return force * distance;
+    }
+    
 }
