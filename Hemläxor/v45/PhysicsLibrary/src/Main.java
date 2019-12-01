@@ -11,7 +11,8 @@ public class Main {
         System.out.println(volumeToMass(SolidTable.IRON,30) + " kg");
         System.out.println("2. If someone runs at an average of 2.7 m/s for 50 minutes they will have traveled approximately: ");
         System.out.println(svtDistance(2.7, 50*60) + " meters");
-
+        System.out.println("3. The energy required to heat 4 liters of water from 22 degrees celsius to boiling is");
+        System.out.println(heat(FluidTable.WATER, volumeToMass(FluidTable.WATER, 4), FluidTable.WATER.boilPoint-22) + " joules");   
     }
 
     /**
