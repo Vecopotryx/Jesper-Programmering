@@ -18,11 +18,17 @@ public class Main {
         System.out.println("4. The total pressure 75 meters below sea level is: ");
         System.out.println(pressureUnderWater(75) + " pascal");
         System.out.println("5. A ball weighing 250 grams that is thrown straight up at a speed of 60 km/h will reach a maximum height of: ");
-        System.out.println(velocityToHeight(kmPerHourToMetersPerSecond(60)) + " meters");
+        System.out.println(velocityToHeight(convertKmphToMps(60)) + " meters");
         System.out.println("6. The power of an engine in an car with the mass 735 kg that has a constant acceleration and does 0-100 in 4.8 seconds will have reached: ");
-        System.out.println(power(work(force(735, acceleration(kmPerHourToMetersPerSecond(100), 4.8)), distance(4.8, acceleration(kmPerHourToMetersPerSecond(100), 4.8))), 4.8) + " watt");
+        System.out.println(power(work(force(735, acceleration(convertKmphToMps(100), 4.8)), distance(4.8, acceleration(convertKmphToMps(100), 4.8))), 4.8) + " watt");
         System.out.println("7. A ball weighing 1kg that is dropped from 12 meters and that looses 1% of it's energy for every bounce will be able to bounce ");
-        System.out.println(bounceCount(1,12) + " times before not being able to bounce to above 0.5 meters");
+        System.out.println(bounceCount(1,12, 0.5, 0.01) + " times before not being able to bounce to above 0.5 meters");
+        System.out.println("8. An object falling from 50 meters above ground will reach ");
+        System.out.println(fallSpeed(50) + " m/s");
+        System.out.println("9. A ball weighing 500 grams thrown straight up at 10 m/s will bounce ");
+        System.out.println(bounceCount(0.5,velocityToHeight(10),0.5,0.05) + " times before not being able to reach above 0.5 meters with an energy loss of 5% per bounce");
+        System.out.println("10. The acceleration of a car traveling at 72 km/h then accelerating for 5 seconds and ending up at 144 km/h is: ");
+        System.out.println(acceleration(convertKmphToMps(144-72),5) + " m/s^2");
     }
 
     /**
@@ -240,7 +246,7 @@ public class Main {
      * @param kmPerHour The speed to convert from km/h to m/s.
      * @return Returns the speed in m/s.
      */
-    public static double kmPerHourToMetersPerSecond(double kmPerHour) {
+    public static double convertKmphToMps(double kmPerHour) {
         return kmPerHour / 3.6;
     }
 
@@ -249,7 +255,7 @@ public class Main {
      * @param metersPerSecond The speed to convert from m/s to km/h.
      * @return Returns the speed in km/h.
      */
-    public static double metersPerSecondToKmPerHour(double metersPerSecond) {
+    public static double convertMpsToKmph(double metersPerSecond) {
         return metersPerSecond * 3.6;
     }
 
@@ -342,17 +348,16 @@ public class Main {
      * @return Returns the distance traveled.
      */
     public static double distance(double time, double acceleration) {
-        double distance = (acceleration * Math.pow(time, 2)) / 2;
-        return distance;
+        return (acceleration * Math.pow(time, 2)) / 2;
     }
 
-    public static double bounceCount(double mass, double height) {
+    public static double bounceCount(double mass, double height, double heightLimit, double energyLoss) {
         double energy = potentialEnergy(mass, height);
         int bounces = 0;
         double i = height;
 
-        while(i >= 0.5) {
-            energy *= 0.99;
+        while(i >= heightLimit) {
+            energy *= 1 - energyLoss;
             i = energy / g_swe;
             bounces++;
         }
