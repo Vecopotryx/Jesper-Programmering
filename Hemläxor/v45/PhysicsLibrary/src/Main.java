@@ -25,6 +25,7 @@ public class Main {
         System.out.println(power(1000,2));
         System.out.println(heat(SolidTable.IRON,1,2));
         System.out.println(heat(FluidTable.WATER,1,10));
+        System.out.println(heat(GasTable.AIR,1,1));
     }
 
     /**
@@ -204,5 +205,16 @@ public class Main {
      */
     public static double heat(FluidTable fluid, double mass, double deltaT) {
         return fluid.heatCapacity * mass * deltaT;
+    }
+
+    /**
+     * Calculates the required energy to heat a certain gas using heat capacity, mass and difference in temperature.
+     * @param gas The gas specified.
+     * @param mass The mass of the gas.
+     * @param deltaT Difference in temperature.
+     * @return Returns the energy needed.
+     */
+    public static double heat(GasTable gas, double mass, double deltaT) {
+        return gas.heatCapacity * mass * deltaT;
     }
 }
