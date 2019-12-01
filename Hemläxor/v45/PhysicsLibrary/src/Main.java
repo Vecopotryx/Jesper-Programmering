@@ -26,6 +26,7 @@ public class Main {
         System.out.println(heat(SolidTable.IRON,1,2));
         System.out.println(heat(FluidTable.WATER,1,10));
         System.out.println(heat(GasTable.AIR,1,1));
+        System.out.println(velocityToHeight(9.82));
     }
 
     /**
@@ -216,5 +217,15 @@ public class Main {
      */
     public static double heat(GasTable gas, double mass, double deltaT) {
         return gas.heatCapacity * mass * deltaT;
+    }
+
+    /**
+     * Calculates the maximum height an object will reach after being straight up in the air
+     * on earth with the acceleration of gravity being 9.82 m/s^2 and also ignoring air resistance.
+     * @param velocity The velocity that the object will be thrown up at.
+     * @return Returns the maximum height an object will reach after being thrown straight up in the air.
+     */
+    public static double velocityToHeight(double velocity) {
+        return Math.pow(velocity, 2) / (2*g_swe); // using formula H = V^2 / 2g
     }
 }
