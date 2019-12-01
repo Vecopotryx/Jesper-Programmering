@@ -23,6 +23,7 @@ public class Main {
         System.out.println(svtTime(10,2));
         System.out.println(work(50,10));
         System.out.println(power(1000,2));
+        System.out.println(heat(SolidTable.IRON,1,2));
     }
 
     /**
@@ -182,4 +183,14 @@ public class Main {
         return work / time;
     }
 
+    /**
+     * Calculates the required energy to heat a certain material using mass and difference in time.
+     * @param solid The material specified.
+     * @param mass The mass of the material
+     * @param deltaT Difference in temperature.
+     * @return Returns the energy needed.
+     */
+    public static double heat(SolidTable solid, double mass, double deltaT) {
+        return solid.heatCapacity * mass * deltaT;
+    }
 }
