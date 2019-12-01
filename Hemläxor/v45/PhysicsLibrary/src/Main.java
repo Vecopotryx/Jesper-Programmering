@@ -287,4 +287,14 @@ public class Main {
     public static double impulseLaw(double mass, double originalVelocity, double velocity) {
         return (mass * velocity) - (mass * originalVelocity);
     }
+
+    /**
+     * Calculates the pressure by using the force applied to a certain area.
+     * @param force The force applied.
+     * @param area The area that the force is applied to.
+     * @return Returns the pressure.
+     */
+    public static double pressure(double force, double area) {
+        return force / area;
+    }
 }
