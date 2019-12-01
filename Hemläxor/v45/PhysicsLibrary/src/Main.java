@@ -276,4 +276,15 @@ public class Main {
     public static double impulse(double force, double deltaT) {
         return force * deltaT;
     }
+
+    /**
+     * Calculates the impulse of an object using mass and difference in velocity.
+     * @param mass The mass of the object.
+     * @param originalVelocity The velocity before collision.
+     * @param velocity The velocity after.
+     * @return Returns the impulse of the object.
+     */
+    public static double impulseLaw(double mass, double originalVelocity, double velocity) {
+        return (mass * velocity) - (mass * originalVelocity);
+    }
 }
