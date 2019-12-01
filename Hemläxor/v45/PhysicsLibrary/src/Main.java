@@ -247,4 +247,13 @@ public class Main {
     public static double kmPerHourToMetersPerSecond(double kmPerHour) {
         return kmPerHour / 3.6;
     }
+
+    /**
+     * Converts speed from m/s to km/h.
+     * @param metersPerSecond The speed to convert from m/s to km/h.
+     * @return Returns the speed in km/h.
+     */
+    public static double metersPerSecondToKmPerHour(double metersPerSecond) {
+        return metersPerSecond * 3.6;
+    }
 }
