@@ -297,4 +297,14 @@ public class Main {
     public static double pressure(double force, double area) {
         return force / area;
     }
+
+    /**
+     * Calculates force using mass and acceleration.
+     * @param mass The mass of the object.
+     * @param acceleration The acceleration of the object.
+     * @return Returns the force.
+     */
+    public static double force(double mass, double acceleration) {
+        return mass * acceleration;
+    }
 }
