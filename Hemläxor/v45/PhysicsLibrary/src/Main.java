@@ -7,26 +7,11 @@ public class Main {
     static double c = 2.99792458E8; // Speed of light in a vacuum (m/s)
 
     public static void main(String[] args) {
-        System.out.println(fahrenheitToCelsius(50));
-        System.out.println(kelvinToCelsius(0));
-        System.out.println(fluidPressure(FluidTable.WATER, 10));
-        System.out.println(pressureUnderWater(10));
-        System.out.println(kineticEnergy(2,2));
-        System.out.println(potentialEnergy(2,5));
-        System.out.println(fallSpeed(2.5));
-        System.out.println(delta(1,10));
-        System.out.println(volumeToMass(FluidTable.WATER,1));
-        System.out.println(volumeToMass(GasTable.AIR,1));
-        System.out.println(volumeToMass(SolidTable.IRON,1));
-        System.out.println(svtVelocity(10,5));
-        System.out.println(svtDistance(10,5));
-        System.out.println(svtTime(10,2));
-        System.out.println(work(50,10));
-        System.out.println(power(1000,2));
-        System.out.println(heat(SolidTable.IRON,1,2));
-        System.out.println(heat(FluidTable.WATER,1,10));
-        System.out.println(heat(GasTable.AIR,1,1));
-        System.out.println(velocityToHeight(9.82));
+        System.out.println("1. 60 liters of iron weighs: ");
+        System.out.println(volumeToMass(SolidTable.IRON,30) + " kg");
+        System.out.println("2. If someone runs at an average of 2.7 m/s for 50 minutes they will have traveled approximately: ");
+        System.out.println(svtDistance(2.7, 50*60) + " meters");
+
     }
 
     /**
