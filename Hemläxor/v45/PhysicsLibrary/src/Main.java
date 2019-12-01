@@ -24,6 +24,7 @@ public class Main {
         System.out.println(work(50,10));
         System.out.println(power(1000,2));
         System.out.println(heat(SolidTable.IRON,1,2));
+        System.out.println(heat(FluidTable.WATER,1,10));
     }
 
     /**
@@ -184,13 +185,24 @@ public class Main {
     }
 
     /**
-     * Calculates the required energy to heat a certain material using mass and difference in time.
+     * Calculates the required energy to heat a certain material using heat capacity, mass and difference in temperature.
      * @param solid The material specified.
-     * @param mass The mass of the material
+     * @param mass The mass of the material.
      * @param deltaT Difference in temperature.
      * @return Returns the energy needed.
      */
     public static double heat(SolidTable solid, double mass, double deltaT) {
         return solid.heatCapacity * mass * deltaT;
+    }
+
+    /**
+     * Calculates the required energy to heat a certain fluid using heat capacity, mass and difference in temperature.
+     * @param fluid The fluid specified.
+     * @param mass The mass of the fluid.
+     * @param deltaT Difference in temperature.
+     * @return Returns the energy needed.
+     */
+    public static double heat(FluidTable fluid, double mass, double deltaT) {
+        return fluid.heatCapacity * mass * deltaT;
     }
 }
