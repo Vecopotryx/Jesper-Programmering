@@ -238,4 +238,13 @@ public class Main {
     public static double density(double mass, double volume) {
         return mass / volume;
     }
+
+    /**
+     * Converts speed from km/h to m/s.
+     * @param kmPerHour The speed to convert from km/h to m/s.
+     * @return Returns the speed in m/s.
+     */
+    public static double kmPerHourToMetersPerSecond(double kmPerHour) {
+        return kmPerHour / 3.6;
+    }
 }
