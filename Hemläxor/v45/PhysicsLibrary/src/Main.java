@@ -256,4 +256,14 @@ public class Main {
     public static double metersPerSecondToKmPerHour(double metersPerSecond) {
         return metersPerSecond * 3.6;
     }
+
+    /**
+     * Calculates the momentum of an object using mass and velocity.
+     * @param mass The mass of the object.
+     * @param velocity The velocity of the object.
+     * @return Returns the momentum of the object.
+     */
+    public static double momentum(double mass, double velocity) {
+        return mass * velocity;
+    }
 }
