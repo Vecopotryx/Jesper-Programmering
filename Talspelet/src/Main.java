@@ -52,19 +52,23 @@ public class Main {
     public static int randomNumberGenerator(int maxValue){
         return new Random().nextInt(maxValue);
     }
-
+    static String _greaterOrSmaller;
     public static void gameScreen(int correctNumber){
         Scanner currentInput = new Scanner(System.in);
         clearScreen();
         printLogo();
+        System.out.println(guessArray.toString());
+        System.out.println(_greaterOrSmaller);
         System.out.println("Amount of guesses: " + guessArray.size());
         int currentGuess = currentInput.nextInt();
+        _greaterOrSmaller = "";
         if(currentGuess == correctNumber){
             System.out.println("Correct guess");
         } else if(currentGuess ==  0) {
             System.out.println("Exit run");
             mainMenu();
         } else {
+            isGreaterOrSmaller(currentGuess,correctNumber);
             guessArray.add(currentGuess);
             gameScreen(correctNumber);
         }
@@ -73,6 +77,14 @@ public class Main {
     public static void clearScreen(){
         for(int i = 0; i < 10; i++){
             System.out.println();
+        }
+    }
+
+    public static void isGreaterOrSmaller(int currentGuess, int correctNumber){
+        if(correctNumber > currentGuess){
+            _greaterOrSmaller = "The correct number is greater than " + currentGuess;
+        } else {
+            _greaterOrSmaller = "The correct number is smaller than " + currentGuess;
         }
     }
 }
