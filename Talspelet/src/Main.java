@@ -1,5 +1,4 @@
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -27,6 +26,7 @@ public class Main {
         switch(input.nextInt()){
             case 1:
                 System.out.println("Easy selected");
+                System.out.println(randomNumberGenerator(100));
                 break;
             case 2:
                 System.out.println("Medium selected");
@@ -40,5 +40,9 @@ public class Main {
                 break;
 
         }
+    }
+
+    public static int randomNumberGenerator(int maxValue){
+        return new Random().nextInt(maxValue);
     }
 }
