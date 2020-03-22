@@ -1,10 +1,11 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    static ArrayList guessArray = new ArrayList();
+    static Scanner input = new Scanner(System.in);
+    static ArrayList _guessArray = new ArrayList();
+    static String difficulty;
 
     public static void main(String[] args) {
 	// write your code here
@@ -12,25 +13,34 @@ public class Main {
     }
 
     public static void mainMenu(){
-        Scanner input = new Scanner(System.in);
 
         printLogo();
         System.out.println("Please press one of the following keys");
         System.out.println("1. Easy (0-100)   ");
         System.out.println("2. Medium (0-1000)");
         System.out.println("3. Difficult (0-100 000)");
+        System.out.println("4. Custom");
         System.out.println("0. Exit");
         switch(input.nextInt()){
             case 1:
-                System.out.println("Easy selected");
-                System.out.println();
+                difficulty = "Easy";
+                clearScreen();
                 gameScreen(randomNumberGenerator(100));
                 break;
             case 2:
-                System.out.println("Medium selected");
+                difficulty = "Medium";
+                clearScreen();
+                gameScreen(randomNumberGenerator(1000));
                 break;
             case 3:
-                System.out.println("Difficult selected");
+                difficulty = "Difficult";
+                clearScreen();
+                gameScreen(randomNumberGenerator(100000));
+                break;
+            case 4:
+                difficulty = "Custom";
+                clearScreen();
+                gameScreen(randomNumberGenerator(customMode()));
                 break;
             case 0:
                 System.out.println("Exit selected");
@@ -38,6 +48,12 @@ public class Main {
                 break;
 
         }
+    }
+
+    public static int customMode(){
+        System.out.println();
+        System.out.print("Please enter the max value: ");
+        return input.nextInt();
     }
 
     public static void printLogo(){
@@ -53,40 +69,51 @@ public class Main {
         return new Random().nextInt(maxValue);
     }
     static String _greaterOrSmaller;
-    static boolean gameStarted;
+    static boolean _gameStarted;
+    static int _currentGuess;
     public static void gameScreen(int correctNumber){
-        Scanner currentInput = new Scanner(System.in);
-
         printLogo();
-        if(gameStarted){
-            gameInfo();
-        } else {
-            System.out.println("Guess by entering a number and pressing enter");
-        }
-        int currentGuess = currentInput.nextInt();
-        if(currentGuess == 5){
-            guessArray.add(currentGuess);
-            _greaterOrSmaller = "";
+        gameInfo();
+        getGuess();
+        if(_currentGuess == correctNumber){
+            _guessArray.add(_currentGuess);
+
             clearScreen();
             victoryScreen();
-            gameStarted = false;
-        } else if(currentGuess ==  0) {
+        } else if(_currentGuess ==  0) {
             System.out.println("Exit run");
-            gameStarted = false;
+            _gameStarted = false;
             mainMenu();
         } else {
             clearScreen();
-            isGreaterOrSmaller(currentGuess,correctNumber);
-            guessArray.add(currentGuess);
-            gameStarted = true;
+            isGreaterOrSmaller(_currentGuess,correctNumber);
+            _guessArray.add(_currentGuess);
+            _gameStarted = true;
             gameScreen(correctNumber);
         }
     }
 
+    public static int getGuess(){
+        Scanner currentInput = new Scanner(System.in);
+        try{
+             _currentGuess = currentInput.nextInt();
+        } catch(Exception e) {
+            System.out.println("Please enter an integer value");
+            getGuess();
+        }
+        return _currentGuess;
+    }
     public static void gameInfo(){
-        System.out.println(guessArray.toString());
-        System.out.println(_greaterOrSmaller);
-        System.out.println("Amount of guesses: " + guessArray.size());
+        if(_gameStarted){
+            System.out.println(_guessArray.toString());
+            System.out.println(_greaterOrSmaller);
+            System.out.println("Amount of guesses: " + _guessArray.size());
+        } else {
+            System.out.println("Current difficulty: " + difficulty);
+            System.out.println("Guess by entering a number and pressing enter");
+            System.out.println("You can exit at anytime by entering 0");
+        }
+
     }
 
     public static void victoryScreen(){
@@ -98,14 +125,17 @@ public class Main {
                 " ╚████╔╝ ██║╚██████╗   ██║   ╚██████╔╝██║  ██║   ██║   \n" +
                 "  ╚═══╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   \n" +
                 "");
-        System.out.println(guessArray.toString());
-        System.out.println("Amount of guesses: " + guessArray.size());
+        System.out.println(_guessArray.toString());
+        System.out.println("Amount of guesses: " + _guessArray.size());
+
         System.out.println("Play again?");
         System.out.println("1. Yes");
         System.out.println("2. No");
         switch (input.nextInt()){
             case 1:
-                guessArray.clear();
+                _guessArray.clear();
+                _greaterOrSmaller = "";
+                _gameStarted = false;
                 mainMenu();
                 break;
             case 2:
