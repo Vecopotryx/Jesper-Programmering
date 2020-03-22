@@ -65,8 +65,10 @@ public class Main {
                 "   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚══════╝╚══════╝╚══════╝   ╚═╝   \n" +
                 "");
     }
+    static int _correctNumber;
     public static int randomNumberGenerator(int maxValue){
-        return new Random().nextInt(maxValue);
+        _correctNumber = new Random().nextInt(maxValue);
+        return _correctNumber;
     }
     static String _greaterOrSmaller;
     static boolean _gameStarted;
@@ -108,6 +110,11 @@ public class Main {
             System.out.println(_guessArray.toString());
             System.out.println(_greaterOrSmaller);
             System.out.println("Amount of guesses: " + _guessArray.size());
+            if(difficulty.equals("Easy")){
+                System.out.println(proximityHint(20));
+            } else if(difficulty.equals("Medium")){
+                System.out.println(proximityHint(50));
+            }
         } else {
             System.out.println("Current difficulty: " + difficulty);
             System.out.println("Guess by entering a number and pressing enter");
@@ -117,7 +124,6 @@ public class Main {
     }
 
     public static void victoryScreen(){
-        Scanner input = new Scanner(System.in);
         System.out.printf("██╗   ██╗██╗ ██████╗████████╗ ██████╗ ██████╗ ██╗   ██╗\n" +
                 "██║   ██║██║██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗╚██╗ ██╔╝\n" +
                 "██║   ██║██║██║        ██║   ██║   ██║██████╔╝ ╚████╔╝ \n" +
@@ -127,7 +133,7 @@ public class Main {
                 "");
         System.out.println(_guessArray.toString());
         System.out.println("Amount of guesses: " + _guessArray.size());
-
+        System.out.println("The correct answer was " + _correctNumber);
         System.out.println("Play again?");
         System.out.println("1. Yes");
         System.out.println("2. No");
@@ -149,6 +155,14 @@ public class Main {
         for(int i = 0; i < 10; i++){
             System.out.println();
         }
+    }
+
+    public static String proximityHint(int proximityWidth){
+            if((_correctNumber - proximityWidth) < _currentGuess && _currentGuess < (_correctNumber + proximityWidth)){
+                return "You're fairly close";
+            } else {
+                return "You're pretty far away";
+            }
     }
 
     public static void isGreaterOrSmaller(int currentGuess, int correctNumber){
