@@ -212,7 +212,7 @@ public class Main {
         System.out.println("Play again?");
         System.out.println("1. Yes");
         System.out.println("2. No");
-        switch (_input.nextInt()){
+        switch (getUserInput()){
             case 1:
                 _guessArray.clear();
                 _gameStarted = false;
@@ -221,8 +221,11 @@ public class Main {
             case 2:
                 System.exit(0);
                 break;
+            default:
+                System.out.println("Please pick a valid option");
+                playAgain();
         }
-    }
+}
 
     /**
      * This method "clears" the screen by printing 10 empty lines into the console.
