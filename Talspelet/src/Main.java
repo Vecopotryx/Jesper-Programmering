@@ -3,9 +3,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner input = new Scanner(System.in);
+    static Scanner _input = new Scanner(System.in);
     static ArrayList _guessArray = new ArrayList();
     static String difficulty;
+    static String _greaterOrSmaller;
+    static boolean _gameStarted;
+    static int _currentGuess;
 
     public static void main(String[] args) {
 	// write your code here
@@ -16,12 +19,12 @@ public class Main {
 
         printLogo();
         System.out.println("Please press one of the following keys");
-        System.out.println("1. Easy (0-100)   ");
-        System.out.println("2. Medium (0-1000)");
-        System.out.println("3. Difficult (0-100 000)");
+        System.out.println("1. Easy (1-100)   ");
+        System.out.println("2. Medium (1-1000)");
+        System.out.println("3. Difficult (1-100 000)");
         System.out.println("4. Custom");
         System.out.println("0. Exit");
-        switch(input.nextInt()){
+        switch(_input.nextInt()){
             case 1:
                 difficulty = "Easy";
                 clearScreen();
@@ -51,9 +54,8 @@ public class Main {
     }
 
     public static int customMode(){
-        System.out.println();
         System.out.print("Please enter the max value: ");
-        return input.nextInt();
+        return getValue();
     }
 
     public static void printLogo(){
@@ -65,18 +67,23 @@ public class Main {
                 "   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚══════╝╚══════╝╚══════╝   ╚═╝   \n" +
                 "");
     }
+
     static int _correctNumber;
     public static int randomNumberGenerator(int maxValue){
-        _correctNumber = new Random().nextInt(maxValue);
+        if(!(maxValue < 2)) {
+            _correctNumber = new Random().nextInt(maxValue - 1) + 1;
+        } else {
+            System.out.println("The specified value was too small, please try again");
+            customMode();
+        }
         return _correctNumber;
     }
-    static String _greaterOrSmaller;
-    static boolean _gameStarted;
-    static int _currentGuess;
+
     public static void gameScreen(int correctNumber){
         printLogo();
         gameInfo();
-        getGuess();
+        _currentGuess = getValue();
+
         if(_currentGuess == correctNumber){
             _guessArray.add(_currentGuess);
 
@@ -95,16 +102,14 @@ public class Main {
         }
     }
 
-    public static int getGuess(){
-        Scanner currentInput = new Scanner(System.in);
-        try{
-             _currentGuess = currentInput.nextInt();
-        } catch(Exception e) {
-            System.out.println("Please enter an integer value");
-            getGuess();
+    public static int getValue(){
+        while (!_input.hasNextInt()) {
+            System.out.println("Enter a valid 32-bit Integer value");
+            _input.next();
         }
-        return _currentGuess;
+        return _input.nextInt();
     }
+
     public static void gameInfo(){
         if(_gameStarted){
             System.out.println(_guessArray.toString());
@@ -116,7 +121,7 @@ public class Main {
                 System.out.println(proximityHint(50));
             }
         } else {
-            System.out.println("Current difficulty: " + difficulty);
+            System.out.println("Current difficulty: " + difficulty + " (1-" + maxValue + ")");
             System.out.println("Guess by entering a number and pressing enter");
             System.out.println("You can exit at anytime by entering 0");
         }
@@ -137,7 +142,7 @@ public class Main {
         System.out.println("Play again?");
         System.out.println("1. Yes");
         System.out.println("2. No");
-        switch (input.nextInt()){
+        switch (_input.nextInt()){
             case 1:
                 _guessArray.clear();
                 _greaterOrSmaller = "";
