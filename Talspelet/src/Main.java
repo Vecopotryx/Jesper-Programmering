@@ -53,25 +53,66 @@ public class Main {
         return new Random().nextInt(maxValue);
     }
     static String _greaterOrSmaller;
+    static boolean gameStarted;
     public static void gameScreen(int correctNumber){
         Scanner currentInput = new Scanner(System.in);
-        clearScreen();
+
         printLogo();
+        if(gameStarted){
+            gameInfo();
+        } else {
+            System.out.println("Guess by entering a number and pressing enter");
+        }
+        int currentGuess = currentInput.nextInt();
+        if(currentGuess == 5){
+            guessArray.add(currentGuess);
+            _greaterOrSmaller = "";
+            clearScreen();
+            victoryScreen();
+            gameStarted = false;
+        } else if(currentGuess ==  0) {
+            System.out.println("Exit run");
+            gameStarted = false;
+            mainMenu();
+        } else {
+            clearScreen();
+            isGreaterOrSmaller(currentGuess,correctNumber);
+            guessArray.add(currentGuess);
+            gameStarted = true;
+            gameScreen(correctNumber);
+        }
+    }
+
+    public static void gameInfo(){
         System.out.println(guessArray.toString());
         System.out.println(_greaterOrSmaller);
         System.out.println("Amount of guesses: " + guessArray.size());
-        int currentGuess = currentInput.nextInt();
-        _greaterOrSmaller = "";
-        if(currentGuess == correctNumber){
-            System.out.println("Correct guess");
-        } else if(currentGuess ==  0) {
-            System.out.println("Exit run");
-            mainMenu();
-        } else {
-            isGreaterOrSmaller(currentGuess,correctNumber);
-            guessArray.add(currentGuess);
-            gameScreen(correctNumber);
+    }
+
+    public static void victoryScreen(){
+        Scanner input = new Scanner(System.in);
+        System.out.printf("██╗   ██╗██╗ ██████╗████████╗ ██████╗ ██████╗ ██╗   ██╗\n" +
+                "██║   ██║██║██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗╚██╗ ██╔╝\n" +
+                "██║   ██║██║██║        ██║   ██║   ██║██████╔╝ ╚████╔╝ \n" +
+                "╚██╗ ██╔╝██║██║        ██║   ██║   ██║██╔══██╗  ╚██╔╝  \n" +
+                " ╚████╔╝ ██║╚██████╗   ██║   ╚██████╔╝██║  ██║   ██║   \n" +
+                "  ╚═══╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   \n" +
+                "");
+        System.out.println(guessArray.toString());
+        System.out.println("Amount of guesses: " + guessArray.size());
+        System.out.println("Play again?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+        switch (input.nextInt()){
+            case 1:
+                guessArray.clear();
+                mainMenu();
+                break;
+            case 2:
+                System.exit(0);
+                break;
         }
+        mainMenu();
     }
 
     public static void clearScreen(){
