@@ -3,13 +3,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    // Defining variables and creating a new scanner.
-    static Scanner _input = new Scanner(System.in);
-    static ArrayList<Integer> _guessArray = new ArrayList<>();
-    static String difficulty;
-    static boolean _gameStarted;
-    static int _currentGuess;
-    static int _correctNumber;
+    // Defining variables
+    static ArrayList<Integer> _guessArray = new ArrayList<>(); // The ArrayList which is used to store previous guesses
+    static String difficulty; // This String is used to store the difficulty.
+    static int _maxValue; // This integer is used to store the max value that was used in the randomizer in order to remind the user of the width to guess within.
+    static boolean _gameStarted; // This boolean is used in order to store whether or not the game has started or not, used to inform the user with the correct information at the start of a new game.
+    static int _currentGuess; // This integer is used to store the latest guess.
+    static int _answer; // This integer is used to store the answer/correct value. It is randomized for every new game.
 
     public static void main(String[] args) {
         mainMenu();
@@ -81,7 +81,7 @@ public class Main {
      * Prints the Talspelet ASCII-logo.
      */
     public static void printLogo(){
-        System.out.printf("████████╗ █████╗ ██╗     ███████╗██████╗ ███████╗██╗     ███████╗████████╗\n" +
+        System.out.print("████████╗ █████╗ ██╗     ███████╗██████╗ ███████╗██╗     ███████╗████████╗\n" +
                 "╚══██╔══╝██╔══██╗██║     ██╔════╝██╔══██╗██╔════╝██║     ██╔════╝╚══██╔══╝\n" +
                 "   ██║   ███████║██║     ███████╗██████╔╝█████╗  ██║     █████╗     ██║   \n" +
                 "   ██║   ██╔══██║██║     ╚════██║██╔═══╝ ██╔══╝  ██║     ██╔══╝     ██║   \n" +
@@ -95,8 +95,9 @@ public class Main {
      * @param maxValue This is the maximum value that can be generated.
      */
     public static void randomNumberGenerator(int maxValue){
+        _maxValue = maxValue;
         if(!(maxValue < 2)) {
-            _correctNumber = new Random().nextInt(maxValue - 1) + 1;
+            _answer = new Random().nextInt(maxValue - 1) + 1;
         } else {
             System.out.println("The specified value was too small, please try again");
             customMode();
@@ -110,7 +111,7 @@ public class Main {
         printLogo();
         gameInfo();
         _currentGuess = getUserInput();
-        if(_currentGuess == _correctNumber){
+        if(_currentGuess == _answer){
             guessCorrect();
         } else if(_currentGuess ==  0) {
             exitRun();
@@ -153,11 +154,12 @@ public class Main {
      * @return Returns the input value.
      */
     public static int getUserInput(){
-        while (!_input.hasNextInt()) {
+        Scanner input = new Scanner(System.in);
+        while (!input.hasNextInt()) {
             System.out.println("Enter a valid 32-bit integer value");
-            _input.next();
+            input.next();
         }
-        return _input.nextInt();
+        return input.nextInt();
     }
 
     /**
@@ -167,7 +169,7 @@ public class Main {
         if(_gameStarted){
             ingameInfo();
         } else {
-            System.out.println("Current difficulty: " + difficulty);
+            System.out.println("Current difficulty: " + difficulty + " (1-" + _maxValue + ")");
             System.out.println("Guess by entering a number and pressing enter");
             System.out.println("You can exit at anytime by entering 0");
         }
@@ -192,14 +194,14 @@ public class Main {
      * This is the method that displays the information that the user will see upon guessing the correct value.
      */
     public static void victoryScreen(){
-        System.out.printf("██╗   ██╗██╗ ██████╗████████╗ ██████╗ ██████╗ ██╗   ██╗\n" +
+        System.out.print("██╗   ██╗██╗ ██████╗████████╗ ██████╗ ██████╗ ██╗   ██╗\n" +
                 "██║   ██║██║██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗╚██╗ ██╔╝\n" +
                 "██║   ██║██║██║        ██║   ██║   ██║██████╔╝ ╚████╔╝ \n" +
                 "╚██╗ ██╔╝██║██║        ██║   ██║   ██║██╔══██╗  ╚██╔╝  \n" +
                 " ╚████╔╝ ██║╚██████╗   ██║   ╚██████╔╝██║  ██║   ██║   \n" +
                 "  ╚═══╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   \n" +
                 "");
-        System.out.println("The correct answer was " + _correctNumber);
+        System.out.println("The answer was " + _answer);
         System.out.println(_guessArray.toString());
         System.out.println("Amount of guesses: " + _guessArray.size());
         playAgain();
@@ -242,9 +244,9 @@ public class Main {
      * @return Returns a string containing the hint.
      */
     public static String proximityHint(int proximityWidth) {
-        if ((_correctNumber - (proximityWidth / 5)) < _currentGuess && _currentGuess < (_correctNumber + (proximityWidth / 5))) {
+        if ((_answer - (proximityWidth / 5)) < _currentGuess && _currentGuess < (_answer + (proximityWidth / 5))) {
             return "You're very close";
-        } else if ((_correctNumber - proximityWidth) < _currentGuess && _currentGuess < (_correctNumber + proximityWidth)) {
+        } else if ((_answer - proximityWidth) < _currentGuess && _currentGuess < (_answer + proximityWidth)) {
             return "You're fairly close";
         } else {
             return "You're pretty far away";
@@ -256,7 +258,7 @@ public class Main {
      * @return Returns a string containing the hint.
      */
     public static String isGreaterOrSmaller(){
-        if(_correctNumber > _currentGuess){
+        if(_answer > _currentGuess){
             return "The correct number is greater than " + _currentGuess;
         } else {
             return "The correct number is smaller than " + _currentGuess;
