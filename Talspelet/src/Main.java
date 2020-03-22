@@ -1,55 +1,63 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     static Scanner _input = new Scanner(System.in);
-    static ArrayList _guessArray = new ArrayList();
+    static ArrayList<Integer> _guessArray = new ArrayList<>();
     static String difficulty;
     static String _greaterOrSmaller;
     static boolean _gameStarted;
     static int _currentGuess;
+    static int _correctNumber;
 
     public static void main(String[] args) {
-	// write your code here
         mainMenu();
     }
 
     public static void mainMenu(){
 
         printLogo();
-        System.out.println("Please press one of the following keys");
+        System.out.println("Please press one of the following keys to select");
         System.out.println("1. Easy (1-100)   ");
         System.out.println("2. Medium (1-1000)");
         System.out.println("3. Difficult (1-100 000)");
         System.out.println("4. Custom");
         System.out.println("0. Exit");
-        switch(_input.nextInt()){
+        getSelection();
+    }
+
+    public static void getSelection(){
+        switch(getValue()){
             case 1:
                 difficulty = "Easy";
                 clearScreen();
-                gameScreen(randomNumberGenerator(100));
+                randomNumberGenerator(100);
+                gameScreen();
                 break;
             case 2:
                 difficulty = "Medium";
                 clearScreen();
-                gameScreen(randomNumberGenerator(1000));
+                randomNumberGenerator(1000);
+                gameScreen();
                 break;
             case 3:
                 difficulty = "Difficult";
                 clearScreen();
-                gameScreen(randomNumberGenerator(100000));
+                randomNumberGenerator(100000);
+                gameScreen();
                 break;
             case 4:
                 difficulty = "Custom";
                 clearScreen();
-                gameScreen(randomNumberGenerator(customMode()));
+                randomNumberGenerator(customMode());
+                gameScreen();
                 break;
             case 0:
-                System.out.println("Exit selected");
                 System.exit(0);
                 break;
-
         }
     }
 
@@ -68,38 +76,46 @@ public class Main {
                 "");
     }
 
-    static int _correctNumber;
-    public static int randomNumberGenerator(int maxValue){
+    public static void randomNumberGenerator(int maxValue){
         if(!(maxValue < 2)) {
             _correctNumber = new Random().nextInt(maxValue - 1) + 1;
         } else {
             System.out.println("The specified value was too small, please try again");
             customMode();
         }
-        return _correctNumber;
     }
 
-    public static void gameScreen(int correctNumber){
+    public static void gameScreen(){
         printLogo();
         gameInfo();
         _currentGuess = getValue();
-
-        if(_currentGuess == correctNumber){
-            _guessArray.add(_currentGuess);
-
-            clearScreen();
-            victoryScreen();
+        if(_currentGuess == _correctNumber){
+            guessCorrect();
         } else if(_currentGuess ==  0) {
-            System.out.println("Exit run");
-            _gameStarted = false;
-            mainMenu();
+            exitRun();
         } else {
-            clearScreen();
-            isGreaterOrSmaller(_currentGuess,correctNumber);
-            _guessArray.add(_currentGuess);
-            _gameStarted = true;
-            gameScreen(correctNumber);
+            guessWrong();
         }
+    }
+
+    public static void guessCorrect(){
+        _guessArray.add(_currentGuess);
+        clearScreen();
+        victoryScreen();
+    }
+
+    public static void exitRun(){
+        System.out.println("Exit run");
+        _gameStarted = false;
+        mainMenu();
+    }
+
+    public static void guessWrong(){
+        clearScreen();
+        isGreaterOrSmaller(_currentGuess,_correctNumber);
+        _guessArray.add(_currentGuess);
+        _gameStarted = true;
+        gameScreen();
     }
 
     public static int getValue(){
@@ -112,20 +128,24 @@ public class Main {
 
     public static void gameInfo(){
         if(_gameStarted){
-            System.out.println(_guessArray.toString());
-            System.out.println(_greaterOrSmaller);
-            System.out.println("Amount of guesses: " + _guessArray.size());
-            if(difficulty.equals("Easy")){
-                System.out.println(proximityHint(20));
-            } else if(difficulty.equals("Medium")){
-                System.out.println(proximityHint(50));
-            }
+            ingameInfo();
         } else {
-            System.out.println("Current difficulty: " + difficulty + " (1-" + maxValue + ")");
+            System.out.println("Current difficulty: " + difficulty);
             System.out.println("Guess by entering a number and pressing enter");
             System.out.println("You can exit at anytime by entering 0");
         }
 
+    }
+
+    public static void ingameInfo(){
+        System.out.println(_guessArray.toString());
+        System.out.println(_greaterOrSmaller);
+        System.out.println("Amount of guesses: " + _guessArray.size());
+        if(difficulty.equals("Easy")){
+            System.out.println(proximityHint(10));
+        } else if(difficulty.equals("Medium")){
+            System.out.println(proximityHint(25));
+        }
     }
 
     public static void victoryScreen(){
@@ -136,9 +156,13 @@ public class Main {
                 " ╚████╔╝ ██║╚██████╗   ██║   ╚██████╔╝██║  ██║   ██║   \n" +
                 "  ╚═══╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   \n" +
                 "");
+        System.out.println("The correct answer was " + _correctNumber);
         System.out.println(_guessArray.toString());
         System.out.println("Amount of guesses: " + _guessArray.size());
-        System.out.println("The correct answer was " + _correctNumber);
+        playAgain();
+    }
+
+    public static void playAgain(){
         System.out.println("Play again?");
         System.out.println("1. Yes");
         System.out.println("2. No");
@@ -153,7 +177,6 @@ public class Main {
                 System.exit(0);
                 break;
         }
-        mainMenu();
     }
 
     public static void clearScreen(){
@@ -162,12 +185,14 @@ public class Main {
         }
     }
 
-    public static String proximityHint(int proximityWidth){
-            if((_correctNumber - proximityWidth) < _currentGuess && _currentGuess < (_correctNumber + proximityWidth)){
-                return "You're fairly close";
-            } else {
-                return "You're pretty far away";
-            }
+    public static String proximityHint(int proximityWidth) {
+        if ((_correctNumber - (proximityWidth / 5)) < _currentGuess && _currentGuess < (_correctNumber + (proximityWidth / 5))) {
+            return "You're very close";
+        } else if ((_correctNumber - proximityWidth) < _currentGuess && _currentGuess < (_correctNumber + proximityWidth)) {
+            return "You're fairly close";
+        } else {
+            return "You're pretty far away";
+        }
     }
 
     public static void isGreaterOrSmaller(int currentGuess, int correctNumber){
