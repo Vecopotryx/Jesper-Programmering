@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
 public class Model {
-    private String _answer;
+    private static String _answer;
     private ArrayList _incorrectGuesses;
 
-    public String get_answer() {
+    public static String get_answer() {
         return _answer;
     }
 
-    public void set_answer(String _answer) {
-        this._answer = _answer;
+    public static void set_answer(String answerIn) {
+        _answer = answerIn;
     }
 
     public ArrayList get_incorrectGuesses() {
