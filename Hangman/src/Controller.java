@@ -1,6 +1,6 @@
 public class Controller {
     public static void start(){
-
+        Interface.printMenu();
     }
 
     public static Integer getInputInteger(){

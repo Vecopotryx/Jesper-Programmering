@@ -1,9 +1,9 @@
 public class Interface {
-    public static void printModeSelect(){
-
+    public static void printMenu(){
+        System.out.println("Hangman");
     }
 
-    public static void printMenu(){
+    public static void printModeSelect(){
 
     }
 
