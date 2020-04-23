@@ -1,6 +1,18 @@
 public class Interface {
     public static void printMenu(){
-        System.out.println("Hangman");
+        printLogo();
+        System.out.println("Please press one of the following keys to select");
+        System.out.println("1. Start game");
+        System.out.println("2. Leaderboard");
+        System.out.println("3. Exit");
+    }
+
+    public static void printLogo(){
+        System.out.printf("██   ██  █████  ███    ██  ██████  ███    ███  █████  ███    ██ \n" +
+                "██   ██ ██   ██ ████   ██ ██       ████  ████ ██   ██ ████   ██ \n" +
+                "███████ ███████ ██ ██  ██ ██   ███ ██ ████ ██ ███████ ██ ██  ██ \n" +
+                "██   ██ ██   ██ ██  ██ ██ ██    ██ ██  ██  ██ ██   ██ ██  ██ ██ \n" +
+                "██   ██ ██   ██ ██   ████  ██████  ██      ██ ██   ██ ██   ████ \n");
     }
 
     public static void printModeSelect(){
