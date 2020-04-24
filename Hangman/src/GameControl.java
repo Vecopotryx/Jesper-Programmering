@@ -1,6 +1,6 @@
 public class GameControl {
     public static void startGame(){
-        getRandomAnswer();
+        HandleFile.randomFromFile("wordlist.txt");
         System.out.println(Model.get_answer());
     }
 
