@@ -30,6 +30,10 @@ public class Interface {
 
     }
 
+    public static void printGameScreen(){
+        System.out.println("Test123");
+    }
+
     public static void clearScreen(){
         for(int i = 0; i < 20; i++){
             System.out.println();
@@ -37,6 +41,7 @@ public class Interface {
         }
     }
 
+    /*
     public static void displayWord(){
         String displayWord = "";
         char[] answerArray = Model.get_answer().toCharArray();
@@ -53,7 +58,7 @@ public class Interface {
         // I'm planning on reworking this entire thing. Just for testing atm
         System.out.println(displayWord);
     }
-
+*/
     public static void displayHangman(){
 
     }

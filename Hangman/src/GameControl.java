@@ -3,9 +3,10 @@ public class GameControl {
         HandleFile.randomFromFile("wordlist.txt");
         System.out.println(Model.get_answer());
         System.out.println(getAnswerLength());
-        char[] guesses = {'b', 'j', 'c'};
-        Model.set_incorrectCharGuesses(guesses);
-        Interface.displayWord();
+        gameScreen();
+        // char[] guesses = {'b', 'j', 'c'};
+        // Model.set_incorrectCharGuesses(guesses);
+        // Interface.displayWord();
     }
 
     private static void getRandomAnswer(){
@@ -16,4 +17,9 @@ public class GameControl {
         return Model.get_answer().length();
     }
 
+    public static void gameScreen(){
+        Interface.printGameScreen();
+        String stringIn = Input.getStringInput();
+        System.out.println(stringIn);
+    }
 }
