@@ -20,7 +20,4 @@ public class MenuControl {
         }
     }
 
-    public static Integer getAnswerLength(){
-        return null;
-    }
 }

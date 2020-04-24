@@ -34,4 +34,17 @@ public class Interface {
             System.out.flush();
         }
     }
+
+    public static void displayWord(){
+        String displayWord = "";
+        for(int i = 0; i < GameControl.getAnswerLength(); i++){
+            displayWord += "_ ";
+        }
+
+        System.out.println(displayWord);
+    }
+
+    public static void displayHangman(){
+
+    }
 }
