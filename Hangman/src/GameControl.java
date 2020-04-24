@@ -3,6 +3,8 @@ public class GameControl {
         HandleFile.randomFromFile("wordlist.txt");
         System.out.println(Model.get_answer());
         System.out.println(getAnswerLength());
+        char[] guesses = {'b', 'j', 'c'};
+        Model.set_incorrectCharGuesses(guesses);
         Interface.displayWord();
     }
 

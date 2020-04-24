@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Interface {
     public static void printMenu(){
         printLogo();
@@ -37,10 +39,18 @@ public class Interface {
 
     public static void displayWord(){
         String displayWord = "";
+        char[] answerArray = Model.get_answer().toCharArray();
+        char[] incorrectCharGuesses = Model.get_incorrectCharGuesses();
         for(int i = 0; i < GameControl.getAnswerLength(); i++){
-            displayWord += "_ ";
+            for(int c = 0; i < Model.get_incorrectGuesses().size(); i++){
+                if(answerArray[i] == incorrectCharGuesses[c]){
+                    displayWord += answerArray[i] + " ";
+                } else {
+                    displayWord += "_ ";
+                }
+            }
         }
-
+        // I'm planning on reworking this entire thing. Just for testing atm
         System.out.println(displayWord);
     }
 

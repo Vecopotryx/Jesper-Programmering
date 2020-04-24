@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class Model {
     private static String _answer;
-    private ArrayList _incorrectGuesses;
+    private static char[] _incorrectCharGuesses;
+    private static ArrayList _incorrectGuesses;
 
     public static String get_answer() {
         return _answer;
@@ -12,11 +13,19 @@ public class Model {
         _answer = answerIn;
     }
 
-    public ArrayList get_incorrectGuesses() {
+    public static ArrayList get_incorrectGuesses() {
         return _incorrectGuesses;
     }
 
-    public void set_incorrectGuesses(ArrayList _incorrectGuesses) {
-        this._incorrectGuesses = _incorrectGuesses;
+    public static void set_incorrectGuesses(ArrayList incorrectGuessesIn) {
+        _incorrectGuesses = incorrectGuessesIn;
+    }
+
+    public static char[] get_incorrectCharGuesses() {
+        return _incorrectCharGuesses;
+    }
+
+    public static void set_incorrectCharGuesses(char[] _incorrectCharGuesses) {
+        Model._incorrectCharGuesses = _incorrectCharGuesses;
     }
 }
