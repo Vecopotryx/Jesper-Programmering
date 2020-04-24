@@ -31,7 +31,13 @@ public class Interface {
     }
 
     public static void printGameScreen(){
+        System.out.println();
         System.out.println("Test123");
+        System.out.println(Model.get_answer());
+        displayWord();
+        if(Model.charGuess.size() > 0){
+            System.out.println(Model.charGuess);
+        }
     }
 
     public static void clearScreen(){
@@ -41,8 +47,8 @@ public class Interface {
         }
     }
 
-    /*
-    public static void displayWord(){
+/*
+    public static void displayWordBak(){
         String displayWord = "";
         char[] answerArray = Model.get_answer().toCharArray();
         char[] incorrectCharGuesses = Model.get_incorrectCharGuesses();
@@ -59,6 +65,20 @@ public class Interface {
         System.out.println(displayWord);
     }
 */
+    private static String displayWord = "";
+    public static void displayWord(){
+        char[] answerArray = Model.get_answer().toCharArray();
+        for(int i = 0; i < GameControl.getAnswerLength(); i++){
+            for(int c = 0; i < Model.charGuess.size(); i++){
+                if(answerArray[i] == Model.charGuess.get(c)){
+                    displayWord += answerArray[i] + " ";
+                } else {
+                    displayWord += "_ ";
+                }
+            }
+        }
+    }
+
     public static void displayHangman(){
 
     }

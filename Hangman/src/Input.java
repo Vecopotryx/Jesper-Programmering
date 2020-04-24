@@ -12,6 +12,10 @@ public class Input {
 
     public static String getStringInput(){
         Scanner input = new Scanner(System.in);
+        while (!input.hasNextLine()) {
+            System.out.println("Enter a valid value");
+            input.next();
+        }
         return input.nextLine();
     }
 }

@@ -21,7 +21,6 @@ public class GameControl {
         return Model.get_answer().length();
     }
 
-    public static ArrayList<Character> charGuess = new ArrayList<Character>();;
     public static void gameScreen(){
         Interface.printGameScreen();
         String stringIn = Input.getStringInput();
@@ -29,8 +28,7 @@ public class GameControl {
         if(stringIn.length() > 1){
 
         } else {
-            charGuess.add(stringIn.toCharArray()[0]);
+            Model.charGuess.add(stringIn.toCharArray()[0]);
         }
-        System.out.println(charGuess);
     }
 }
