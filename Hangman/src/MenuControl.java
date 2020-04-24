@@ -12,7 +12,7 @@ public class MenuControl {
                 break;
             case 2:
                 System.out.println("Leaderboard selected");
-                HandleFile.readFile("file.txt");
+                Interface.printLeaderboard();
                 break;
             case 3:
                 System.out.println("Exit selected");
