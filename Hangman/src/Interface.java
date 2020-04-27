@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Interface {
@@ -65,18 +66,39 @@ public class Interface {
         System.out.println(displayWord);
     }
 */
+    public ArrayList<Character> assembleWord;
     private static String displayWord = "";
     public static void displayWord(){
-        char[] answerArray = Model.get_answer().toCharArray();
-        for(int i = 0; i < GameControl.getAnswerLength(); i++){
-            for(int c = 0; i < Model.charGuess.size(); i++){
-                if(answerArray[i] == Model.charGuess.get(c)){
-                    displayWord += answerArray[i] + " ";
-                } else {
-                    displayWord += "_ ";
+        //char[] answerArray = Model.get_answer().toCharArray();
+        /* for(int i = 0; i < GameControl.getAnswerLength(); i++){
+            for(int c = 0; i < Model.charGuess.size(); i++ ){
+                if(Model.charGuess.size() < GameControl.getAnswerLength()) {
+                    if (answerArray[i] == Model.charGuess.get(c)) {
+                        displayWord += answerArray[i] + " ";
+                        System.out.println("Yes");
+                    } else {
+                        displayWord += "_ ";
+                    }
                 }
             }
         }
+        */
+
+        ArrayList<Character> answerArray = new ArrayList<Character>();
+        /*for(int i = 0; i < Model.get_answer().length(); i++){
+            answerArray
+        }*/
+        for (char c : Model.get_answer().toCharArray()) {
+            answerArray.add(c);
+        }
+
+        System.out.println(answerArray.toString());
+        /*
+            if(answerArray.contains())
+            if(answerArray Model.charGuess
+        if()
+*/
+        System.out.println(displayWord);
     }
 
     public static void displayHangman(){
