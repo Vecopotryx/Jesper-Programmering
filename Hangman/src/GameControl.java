@@ -26,16 +26,16 @@ public class GameControl {
     public static void gameScreen(){
         Interface.printGameScreen();
         String stringIn = Input.getStringInput();
-
-        System.out.println(stringIn);
         if(stringIn.length() > 1){
             System.out.println("This application only supports entering a valid char");
         } else {
-            if(Model.charGuess.contains((stringIn.toCharArray()[0]))){
-                System.out.println("You've already guessed that");
-                gameScreen();
-            } else {
-                Model.charGuess.add(stringIn.toCharArray()[0]);
+            if(!stringIn.equals("")){
+                if(Model.charGuess.contains((stringIn.toCharArray()[0]))){
+                    System.out.println("You've already guessed that");
+                    gameScreen();
+                } else {
+                    Model.charGuess.add(stringIn.toCharArray()[0]);
+                }
             }
         }
     }
