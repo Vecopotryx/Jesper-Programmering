@@ -6,15 +6,17 @@ public class GameControl {
         populateArray();
         while(true){
             updateDisplayWord();
-            gameScreen();
+            if(Model.displayWord.equals(Model.get_answer())){
+                victoryScreen();
+                break;
+            } else {
+                gameScreen();
+            }
         }
-        // char[] guesses = {'b', 'j', 'c'};
-        // Model.set_incorrectCharGuesses(guesses);
-        // Interface.displayWord();
     }
 
-    private static void getRandomAnswer(){
-        Model.set_answer("Test");
+    public static void victoryScreen(){
+        System.out.println("Victory");
     }
 
     public static Integer getAnswerLength(){
@@ -50,11 +52,11 @@ public class GameControl {
             boolean isYes = false;
             for(int c = 0; c < Model.charGuess.size(); c++)
                 if(Model.get_answer().toCharArray()[i] == Model.charGuess.get(c)){
-                    Model.displayWord += Model.charGuess.get(c) + " ";
+                    Model.displayWord += Model.charGuess.get(c) + "";
                     isYes = true;
                 }
             if(!isYes){
-                Model.displayWord += "_ ";
+                Model.displayWord += "_";
             }
 
         }
