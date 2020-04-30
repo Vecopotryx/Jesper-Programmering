@@ -35,7 +35,7 @@ public class Interface {
         System.out.println();
         System.out.println("Test123");
         System.out.println(Model.get_answer());
-        displayWord();
+        System.out.println(displayWord);
         if(Model.charGuess.size() > 0){
             System.out.println(Model.charGuess);
         }
@@ -48,57 +48,47 @@ public class Interface {
         }
     }
 
-/*
-    public static void displayWordBak(){
-        String displayWord = "";
-        char[] answerArray = Model.get_answer().toCharArray();
-        char[] incorrectCharGuesses = Model.get_incorrectCharGuesses();
-        for(int i = 0; i < GameControl.getAnswerLength(); i++){
-            for(int c = 0; i < Model.get_incorrectGuesses().size(); i++){
-                if(answerArray[i] == incorrectCharGuesses[c]){
-                    displayWord += answerArray[i] + " ";
-                } else {
-                    displayWord += "_ ";
-                }
-            }
-        }
-        // I'm planning on reworking this entire thing. Just for testing atm
-        System.out.println(displayWord);
-    }
-*/
-    public ArrayList<Character> assembleWord;
-    private static String displayWord = "";
-    public static void displayWord(){
-        //char[] answerArray = Model.get_answer().toCharArray();
-        /* for(int i = 0; i < GameControl.getAnswerLength(); i++){
-            for(int c = 0; i < Model.charGuess.size(); i++ ){
-                if(Model.charGuess.size() < GameControl.getAnswerLength()) {
-                    if (answerArray[i] == Model.charGuess.get(c)) {
-                        displayWord += answerArray[i] + " ";
-                        System.out.println("Yes");
-                    } else {
-                        displayWord += "_ ";
-                    }
-                }
-            }
-        }
-        */
-
-        ArrayList<Character> answerArray = new ArrayList<Character>();
-        /*for(int i = 0; i < Model.get_answer().length(); i++){
-            answerArray
-        }*/
-        for (char c : Model.get_answer().toCharArray()) {
+    public static ArrayList<Character> answerArray = new ArrayList<Character>();
+    public static void populateArray(){
+        for(char c : Model.get_answer().toCharArray()) {
             answerArray.add(c);
         }
+    }
 
+    public ArrayList<Character> assembleWord;
+    private static String displayWord = "";
+
+    public static void displayWord(){
         System.out.println(answerArray.toString());
-        /*
-            if(answerArray.contains())
-            if(answerArray Model.charGuess
-        if()
-*/
+        displayWord = "";
+            for(int i = 0; i < answerArray.size(); i++){
+                boolean isYes = false;
+                for(int c = 0; c < Model.charGuess.size(); c++)
+                    if(Model.get_answer().toCharArray()[i] == Model.charGuess.get(c)){
+                        displayWord += Model.charGuess.get(c);
+                        isYes = true;
+                }
+                if(!isYes){
+                    displayWord += "_";
+                }
+
+            }
         System.out.println(displayWord);
+
+        /*
+        if(answerArray.contains(guessIn)){
+            for(int i = 0; i < answerArray.size(); i++){
+                if(guessIn == answerArray.get(i)){
+
+                }
+            }
+        } else {
+            displayWord += "_ ";
+        }
+        System.out.println(displayWordList.toString());
+        System.out.println(answerArray.toString());
+        System.out.println(displayWord);
+         */
     }
 
     public static void displayHangman(){

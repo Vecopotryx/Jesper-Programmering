@@ -5,6 +5,7 @@ public class GameControl {
         HandleFile.randomFromFile("wordlist.txt");
         System.out.println(Model.get_answer());
         System.out.println(getAnswerLength());
+        Interface.populateArray();
         while(true){
             gameScreen();
         }
@@ -23,7 +24,9 @@ public class GameControl {
 
     public static void gameScreen(){
         Interface.printGameScreen();
+        Interface.displayWord();
         String stringIn = Input.getStringInput();
+
         System.out.println(stringIn);
         if(stringIn.length() > 1){
 
