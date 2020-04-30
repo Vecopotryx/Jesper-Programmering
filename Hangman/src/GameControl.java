@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class GameControl {
     public static void startGame(){
         HandleFile.randomFromFile("wordlist.txt");
@@ -7,7 +5,7 @@ public class GameControl {
         System.out.println(getAnswerLength());
         populateArray();
         while(true){
-            yesWord();
+            updateDisplayWord();
             gameScreen();
         }
         // char[] guesses = {'b', 'j', 'c'};
@@ -46,17 +44,17 @@ public class GameControl {
         }
     }
 
-    public static void yesWord(){
+    public static void updateDisplayWord(){
         Model.displayWord = "";
         for(int i = 0; i < Model.answerArray.size(); i++){
             boolean isYes = false;
             for(int c = 0; c < Model.charGuess.size(); c++)
                 if(Model.get_answer().toCharArray()[i] == Model.charGuess.get(c)){
-                    Model.displayWord += Model.charGuess.get(c);
+                    Model.displayWord += Model.charGuess.get(c) + " ";
                     isYes = true;
                 }
             if(!isYes){
-                Model.displayWord += "_";
+                Model.displayWord += "_ ";
             }
 
         }

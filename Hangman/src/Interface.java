@@ -32,8 +32,10 @@ public class Interface {
     }
 
     public static void printGameScreen(){
+        clearScreen();
         System.out.println();
-        System.out.println("Test123");
+        System.out.println("Hangman");
+        System.out.println("Current guess: " + (Model.charGuess.size() + 1));
         System.out.println(Model.get_answer());
         System.out.println(Model.displayWord);
         if(Model.charGuess.size() > 0){
