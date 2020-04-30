@@ -11,4 +11,9 @@ public class Model {
     public static void set_answer(String answerIn) {
         _answer = answerIn;
     }
+
+    public static String displayWord = "";
+
+    public static ArrayList<Character> answerArray = new ArrayList<Character>();
+
 }

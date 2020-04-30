@@ -35,7 +35,7 @@ public class Interface {
         System.out.println();
         System.out.println("Test123");
         System.out.println(Model.get_answer());
-        System.out.println(displayWord);
+        System.out.println(Model.displayWord);
         if(Model.charGuess.size() > 0){
             System.out.println(Model.charGuess);
         }
@@ -46,49 +46,6 @@ public class Interface {
             System.out.println();
             System.out.flush();
         }
-    }
-
-    public static ArrayList<Character> answerArray = new ArrayList<Character>();
-    public static void populateArray(){
-        for(char c : Model.get_answer().toCharArray()) {
-            answerArray.add(c);
-        }
-    }
-
-    public ArrayList<Character> assembleWord;
-    private static String displayWord = "";
-
-    public static void displayWord(){
-        System.out.println(answerArray.toString());
-        displayWord = "";
-            for(int i = 0; i < answerArray.size(); i++){
-                boolean isYes = false;
-                for(int c = 0; c < Model.charGuess.size(); c++)
-                    if(Model.get_answer().toCharArray()[i] == Model.charGuess.get(c)){
-                        displayWord += Model.charGuess.get(c);
-                        isYes = true;
-                }
-                if(!isYes){
-                    displayWord += "_";
-                }
-
-            }
-        System.out.println(displayWord);
-
-        /*
-        if(answerArray.contains(guessIn)){
-            for(int i = 0; i < answerArray.size(); i++){
-                if(guessIn == answerArray.get(i)){
-
-                }
-            }
-        } else {
-            displayWord += "_ ";
-        }
-        System.out.println(displayWordList.toString());
-        System.out.println(answerArray.toString());
-        System.out.println(displayWord);
-         */
     }
 
     public static void displayHangman(){
