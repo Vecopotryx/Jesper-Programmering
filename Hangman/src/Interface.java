@@ -44,6 +44,56 @@ public class Interface {
     }
 
     public static void displayHangman(){
-
+        ArrayList<String> str = new ArrayList<String>();
+        str.add("  +---+\n" +
+                "  |   |\n" +
+                "      |\n" +
+                "      |\n" +
+                "      |\n" +
+                "      |\n" +
+                "=========");
+        str.add("  +---+\n" +
+                "  |   |\n" +
+                "  O   |\n" +
+                "      |\n" +
+                "      |\n" +
+                "      |\n" +
+                "=========");
+        str.add("  +---+\n" +
+                "  |   |\n" +
+                "  O   |\n" +
+                "  |   |\n" +
+                "      |\n" +
+                "      |\n" +
+                "=========");
+        str.add("  +---+\n" +
+                "  |   |\n" +
+                "  O   |\n" +
+                " /|   |\n" +
+                "      |\n" +
+                "      |\n" +
+                "=========");
+        str.add("  +---+\n" +
+                "  |   |\n" +
+                "  O   |\n" +
+                " /|\\  |\n" +
+                "      |\n" +
+                "      |\n" +
+                "=========");
+        str.add("  +---+\n" +
+                "  |   |\n" +
+                "  O   |\n" +
+                " /|\\  |\n" +
+                " /    |\n" +
+                "      |\n" +
+                "=========");
+        str.add("  +---+\n" +
+                "  |   |\n" +
+                "  O   |\n" +
+                " /|\\  |\n" +
+                " / \\  |\n" +
+                "      |\n" +
+                "=========");
+        System.out.println(str.get(6));
     }
 }

@@ -10,6 +10,7 @@ public class GameControl {
                 victoryScreen();
                 break;
             } else {
+                Interface.displayHangman();
                 gameScreen();
             }
         }
