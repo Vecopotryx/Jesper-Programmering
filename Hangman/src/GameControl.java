@@ -17,9 +17,29 @@ public class GameControl {
     }
 
     public static void victoryScreen(){
-        System.out.println("Victory");
+        Interface.printVictoryScreen();
+        switch(Input.getIntegerInput()){
+            case 1:
+                clearVariables();
+                GameControl.startGame();
+                break;
+            case 2:
+                Interface.printLeaderboard();
+                break;
+            case 3:
+                System.out.println("Exit selected");
+                System.exit(0);
+        }
     }
 
+    public static void clearVariables(){
+        Model.set_answer("");
+        Model._wrongGuessesAmount = 0;
+        Model._answerArray.clear();
+        Model._charGuess.clear();
+        Model._infoForUser = "";
+        Model._displayWord = "";
+    }
 
     public static void gameScreen(){
         Interface.printGameScreen();
