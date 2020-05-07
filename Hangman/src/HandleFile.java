@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -43,5 +42,15 @@ public class HandleFile {
         } else {
             System.out.println("File doesn't exist");
         }
+    }
+
+    // Utilizing https://howtodoinjava.com/java/io/java-append-to-file/
+    public static void writeToFile(String fileName, String textIn) throws IOException {
+        BufferedWriter writer = new BufferedWriter(
+                new FileWriter(fileName, true)
+        );
+        writer.newLine();
+        writer.write(textIn);
+        writer.close();
     }
 }

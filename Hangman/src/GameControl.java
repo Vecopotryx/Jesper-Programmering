@@ -8,7 +8,7 @@ public class GameControl {
                 victoryScreen();
                 break;
             } else if(Model._wrongGuessesAmount == 6) {
-                System.out.println("Game over");
+                lossScreen();
                 break;
             } else {
                 gameScreen();
@@ -24,11 +24,47 @@ public class GameControl {
                 GameControl.startGame();
                 break;
             case 2:
-                Interface.printLeaderboard();
+                addToLeaderboard();
                 break;
             case 3:
-                System.out.println("Exit selected");
+                System.out.println("Goodbye");
                 System.exit(0);
+        }
+    }
+
+    public static void lossScreen() {
+        Interface.printGameOverScreen();
+        switch (Input.getIntegerInput()) {
+            case 1:
+                clearVariables();
+                GameControl.startGame();
+                break;
+            case 2:
+                System.out.println("Goodbye");
+                System.exit(0);
+        }
+    }
+
+    public static void addToLeaderboard(){
+        System.out.print("Enter name: ");
+        String name = Input.getStringInput();
+        try{
+            HandleFile.writeToFile("file.txt", name + " - " + Model._wrongGuessesAmount + " wrong guesses");
+
+        } catch(Exception E) {
+            System.out.println("An error occurred");
+        }
+        System.out.println("1. Go again");
+        System.out.println("2. Exit");
+        switch(Input.getIntegerInput()) {
+            case 1:
+                clearVariables();
+                GameControl.startGame();
+                break;
+            case 2:
+                System.out.println("Goodbye");
+                System.exit(0);
+                break;
         }
     }
 

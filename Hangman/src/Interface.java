@@ -62,6 +62,21 @@ public class Interface {
         System.out.println("3. Exit");
     }
 
+    public static void printGameOverScreen(){
+        clearScreen();
+        System.out.println();
+        System.out.println("-+Game Over+-");
+        System.out.println("You lost");
+        System.out.println("The answer was: " + Model.get_answer());
+        System.out.println("Your guess was: " + Model._displayWord);
+        System.out.println("Amount of guesses: " + (Model._charGuess.size()));
+        System.out.println("Amount of incorrect guesses: " + Model._wrongGuessesAmount);
+        System.out.println(Model._charGuess);
+        System.out.println("-----------------");
+        System.out.println("1. Play again");
+        System.out.println("2. Exit");
+    }
+
     public static void displayHangman(){
         ArrayList<String> str = new ArrayList<String>();
         str.add("  +---+\n" +

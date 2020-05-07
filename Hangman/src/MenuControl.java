@@ -14,6 +14,7 @@ public class MenuControl {
                 break;
             case 3:
                 System.out.println("Multiplayer selected");
+                GameControl.addToLeaderboard();
                 break;
             case 4:
                 System.out.println("Exit selected");
