@@ -1,16 +1,16 @@
 public class GameControl {
     public static void startGame(){
         HandleFile.randomFromFile("wordlist.txt");
-        System.out.println(Model.get_answer());
-        System.out.println(getAnswerLength());
-        populateArray();
+        Model.populateArray();
         while(true){
             updateDisplayWord();
-            if(Model.displayWord.equals(Model.get_answer())){
+            if(Model._displayWord.equals(Model.get_answer())){
                 victoryScreen();
                 break;
+            } else if(Model._wrongGuessesAmount == 6) {
+                System.out.println("Game over");
+                break;
             } else {
-                Interface.displayHangman();
                 gameScreen();
             }
         }
@@ -20,44 +20,42 @@ public class GameControl {
         System.out.println("Victory");
     }
 
-    public static Integer getAnswerLength(){
-        return Model.get_answer().length();
-    }
 
     public static void gameScreen(){
         Interface.printGameScreen();
         String stringIn = Input.getStringInput();
         if(stringIn.length() > 1){
-            System.out.println("This application only supports entering a valid char");
+            Model._infoForUser = "This application only supports entering a valid char";
         } else {
             if(!stringIn.equals("")){
-                if(Model.charGuess.contains((stringIn.toCharArray()[0]))){
-                    System.out.println("You've already guessed that");
+                if(Model._charGuess.contains((stringIn.toCharArray()[0]))){
+                    Model._infoForUser = "You've already guessed that";
                     gameScreen();
+                } else if(!(Model._answerArray.contains((stringIn.toCharArray()[0])))) {
+                    Model._charGuess.add(stringIn.toCharArray()[0]);
+                    Model._wrongGuessesAmount += 1;
+                    Model._infoForUser = "";
                 } else {
-                    Model.charGuess.add(stringIn.toCharArray()[0]);
+                    Model._charGuess.add(stringIn.toCharArray()[0]);
+                    Model._infoForUser = "";
                 }
             }
         }
     }
 
-    public static void populateArray(){
-        for(char c : Model.get_answer().toCharArray()) {
-            Model.answerArray.add(c);
-        }
-    }
+
 
     public static void updateDisplayWord(){
-        Model.displayWord = "";
-        for(int i = 0; i < Model.answerArray.size(); i++){
+        Model._displayWord = "";
+        for(int i = 0; i < Model._answerArray.size(); i++){
             boolean isYes = false;
-            for(int c = 0; c < Model.charGuess.size(); c++)
-                if(Model.get_answer().toCharArray()[i] == Model.charGuess.get(c)){
-                    Model.displayWord += Model.charGuess.get(c) + "";
+            for(int c = 0; c < Model._charGuess.size(); c++)
+                if(Model.get_answer().toCharArray()[i] == Model._charGuess.get(c)){
+                    Model._displayWord += Model._charGuess.get(c) + "";
                     isYes = true;
                 }
             if(!isYes){
-                Model.displayWord += "_";
+                Model._displayWord += "_";
             }
 
         }

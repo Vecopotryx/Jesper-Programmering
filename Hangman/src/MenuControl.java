@@ -7,11 +7,9 @@ public class MenuControl {
         Interface.printMenu();
         switch(Input.getIntegerInput()){
             case 1:
-                System.out.println("Start game selected");
                 GameControl.startGame();
                 break;
             case 2:
-                System.out.println("Leaderboard selected");
                 Interface.printLeaderboard();
                 break;
             case 3:

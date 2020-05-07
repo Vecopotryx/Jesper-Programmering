@@ -11,10 +11,24 @@ public class Model {
         _answer = answerIn;
     }
 
-    public static ArrayList<Character> charGuess = new ArrayList<Character>();;
+    public static Integer getAnswerLength(){
+        return _answer.length();
+    }
 
-    public static String displayWord = "";
+    public static ArrayList<Character> _charGuess = new ArrayList<Character>();;
 
-    public static ArrayList<Character> answerArray = new ArrayList<Character>();
+    public static String _displayWord = "";
+
+    public static ArrayList<Character> _answerArray = new ArrayList<Character>();
+
+    public static void populateArray(){
+        for(char c : Model.get_answer().toCharArray()) {
+            _answerArray.add(c);
+        }
+    }
+
+    public static String _infoForUser = "";
+
+    public static Integer _wrongGuessesAmount = 0;
 
 }

@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Interface {
@@ -28,11 +27,14 @@ public class Interface {
         clearScreen();
         System.out.println();
         System.out.println("Hangman");
-        System.out.println("Current guess: " + (Model.charGuess.size() + 1));
-        System.out.println(Model.get_answer());
-        System.out.println(Model.displayWord);
-        if(Model.charGuess.size() > 0){
-            System.out.println(Model.charGuess);
+        Interface.displayHangman();
+        System.out.println("Current guess: " + (Model._charGuess.size()));
+        System.out.println(Model._displayWord);
+        if(Model._infoForUser.length() > 0){
+            System.out.println(Model._infoForUser);
+        }
+        if(Model._charGuess.size() > 0){
+            System.out.println(Model._charGuess);
         }
     }
 
@@ -94,6 +96,6 @@ public class Interface {
                 " / \\  |\n" +
                 "      |\n" +
                 "=========");
-        System.out.println(str.get(6));
+        System.out.println(str.get(Model._wrongGuessesAmount));
     }
 }
