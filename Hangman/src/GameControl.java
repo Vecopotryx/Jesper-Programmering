@@ -124,6 +124,23 @@ public class GameControl {
     }
 
     public static void setCustomSettings(){
-
+        Interface.clearScreen();
+        Interface.printCustomSettings();
+        switch(Input.getIntegerInput()){
+            case 1:
+                System.out.println("Easy selected");
+                break;
+            case 2:
+                System.out.println("Medium selected");
+                break;
+            case 3:
+                System.out.println("Difficult selected");
+                break;
+            case 4:
+                System.out.println("Custom selected");
+            default:
+                Interface.clearScreen();
+                setCustomSettings();
+        }
     }
 }

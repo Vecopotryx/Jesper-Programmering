@@ -18,6 +18,19 @@ public class Interface {
                 "██   ██ ██   ██ ██   ████  ██████  ██      ██ ██   ██ ██   ████ \n");
     }
 
+    public static void printCustomSettings(){
+        System.out.println("Please press one of the following keys to select");
+        System.out.println("1. Easy (1-3 characters)");
+        System.out.println("2. Medium (3-5 characters");
+        System.out.println("3. Difficult (5-8 characters)");
+        System.out.println("4. Custom");
+    }
+
+    public static void printPickCustomSpan(String type){
+        System.out.print("Please enter the " + type +  " length: " );
+    }
+
+
     public static void printLeaderboard(){
         clearScreen();
         HandleFile.readFile("file.txt");

@@ -14,7 +14,7 @@ public class MenuControl {
                 break;
             case 3:
                 Interface.printLeaderboard();
-                if(Input.getStringInput().length()>-1){
+                if(Input.getStringInput().length()>=0){
                     start();
                 }
                 break;
