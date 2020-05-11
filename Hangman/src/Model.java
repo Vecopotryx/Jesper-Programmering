@@ -29,8 +29,8 @@ public class Model {
 
     public static Integer _wrongGuessesAmount = 0;
 
-    public static Integer customMinLength = 1;
+    public static Integer _customMinLength = 1;
 
-    public static Integer customMaxLength = 12;
+    public static Integer _customMaxLength = 12;
 
 }

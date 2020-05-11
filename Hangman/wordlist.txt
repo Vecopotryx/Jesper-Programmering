@@ -148,7 +148,7 @@ old
 too
 same
 tell
-does
+binary
 set
 three
 want
@@ -174,14 +174,14 @@ big
 high
 such
 follow
-act
+bit
 why
 ask
-men
+bug
 change
 went
 light
-kind
+byte
 off
 need
 house
@@ -327,7 +327,7 @@ black
 short
 numeral
 class
-wind
+computer
 question
 happen
 complete
@@ -343,7 +343,7 @@ piece
 told
 knew
 pass
-since
+input
 top
 whole
 king

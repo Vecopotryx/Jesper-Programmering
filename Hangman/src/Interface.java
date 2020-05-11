@@ -4,8 +4,8 @@ public class Interface {
     public static void printMenu(){
         printLogo();
         System.out.println("Please press one of the following keys to select");
-        System.out.println("1. Start game");
-        System.out.println("2. Custom");
+        System.out.println("1. Random game");
+        System.out.println("2. Custom game");
         System.out.println("3. Leaderboard");
         System.out.println("4. Exit");
     }

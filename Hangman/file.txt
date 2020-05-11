@@ -1,5 +1,2 @@
 Leaderboard:
-Person one
-Person two
-Person three
-test
+Someone - 4 wrong guesses

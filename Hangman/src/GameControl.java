@@ -1,6 +1,4 @@
 public class GameControl {
-
-
     public static void startGame(){
         HandleFile.randomFromFile("wordlist.txt");
         Model.populateArray();
@@ -129,15 +127,37 @@ public class GameControl {
         switch(Input.getIntegerInput()){
             case 1:
                 System.out.println("Easy selected");
+                Model._customMinLength = 1;
+                Model._customMaxLength = 3;
+                startGame();
                 break;
             case 2:
                 System.out.println("Medium selected");
+                Model._customMinLength = 3;
+                Model._customMaxLength = 5;
+                startGame();
                 break;
             case 3:
                 System.out.println("Difficult selected");
+                Model._customMinLength = 5;
+                Model._customMaxLength = 8;
+                startGame();
                 break;
             case 4:
-                System.out.println("Custom selected");
+                Interface.printPickCustomSpan("minimum");
+                Model._customMinLength = Input.getIntegerInput();
+                if(Model._customMinLength > 6){
+                    System.out.println("Maximum supported minimum length is 6");
+                    Model._customMinLength = 6;
+                }
+                Interface.printPickCustomSpan("maximum");
+                Model._customMaxLength = Input.getIntegerInput();
+                while(Model._customMaxLength < Model._customMinLength){
+                    System.out.println("Maximum length can't be smaller than the minimum length");
+                    Interface.printPickCustomSpan("maximum");
+                    Model._customMaxLength = Input.getIntegerInput();
+                }
+                startGame();
             default:
                 Interface.clearScreen();
                 setCustomSettings();

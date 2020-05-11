@@ -33,7 +33,7 @@ public class HandleFile {
                 for(int i = 0; i < random.nextInt(1000); i++){
                     data = reader.nextLine();
                 }
-                if(Model.customMinLength <= data.length() && data.length() <= Model.customMaxLength){
+                if(Model._customMinLength <= data.length() && data.length() <= Model._customMaxLength){
                     Model.set_answer(data);
                 } else {
                     randomFromFile(fileName);
