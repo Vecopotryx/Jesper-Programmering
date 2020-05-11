@@ -115,7 +115,7 @@ public class GameControl {
                     isYes = true;
                 }
             if(!isYes){
-                Model._displayWord += "_ ";
+                Model._displayWord += " _ ";
             }
 
         }
