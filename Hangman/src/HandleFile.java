@@ -28,12 +28,16 @@ public class HandleFile {
         File fileIn = new File(fileName);
         if(fileIn.exists()){
             try {
-                String data = null;
+                String data = "java";
                 Scanner reader = new Scanner(fileIn);
                 for(int i = 0; i < random.nextInt(1000); i++){
                     data = reader.nextLine();
                 }
-                Model.set_answer(data);
+                if(Model.customMinLength <= data.length() && data.length() <= Model.customMaxLength){
+                    Model.set_answer(data);
+                } else {
+                    randomFromFile(fileName);
+                }
                 reader.close();
             } catch (FileNotFoundException e) {
                 System.out.println("An error occurred.");

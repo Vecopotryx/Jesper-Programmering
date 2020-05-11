@@ -1,4 +1,6 @@
 public class GameControl {
+
+
     public static void startGame(){
         HandleFile.randomFromFile("wordlist.txt");
         Model.populateArray();
@@ -21,7 +23,7 @@ public class GameControl {
         switch(Input.getIntegerInput()){
             case 1:
                 clearVariables();
-                GameControl.startGame();
+                MenuControl.start();
                 break;
             case 2:
                 addToLeaderboard();
@@ -37,11 +39,15 @@ public class GameControl {
         switch (Input.getIntegerInput()) {
             case 1:
                 clearVariables();
-                GameControl.startGame();
+                MenuControl.menu();
                 break;
             case 2:
                 System.out.println("Goodbye");
                 System.exit(0);
+            default:
+                clearVariables();
+                MenuControl.start();
+                break;
         }
     }
 
@@ -59,7 +65,7 @@ public class GameControl {
         switch(Input.getIntegerInput()) {
             case 1:
                 clearVariables();
-                GameControl.startGame();
+                MenuControl.start();
                 break;
             case 2:
                 System.out.println("Goodbye");
@@ -111,9 +117,13 @@ public class GameControl {
                     isYes = true;
                 }
             if(!isYes){
-                Model._displayWord += "_";
+                Model._displayWord += "_ ";
             }
 
         }
+    }
+
+    public static void setCustomSettings(){
+
     }
 }

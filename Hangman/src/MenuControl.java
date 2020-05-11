@@ -10,14 +10,20 @@ public class MenuControl {
                 GameControl.startGame();
                 break;
             case 2:
-                Interface.printLeaderboard();
+                GameControl.setCustomSettings();
                 break;
             case 3:
-                System.out.println("Multiplayer selected");
+                Interface.printLeaderboard();
+                if(Input.getStringInput().length()>-1){
+                    start();
+                }
                 break;
             case 4:
-                System.out.println("Exit selected");
-                break;
+                System.out.println("Goodbye");
+                System.exit(0);
+            default:
+                Interface.clearScreen();
+                start();
         }
     }
 

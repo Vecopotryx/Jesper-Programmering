@@ -5,8 +5,8 @@ public class Interface {
         printLogo();
         System.out.println("Please press one of the following keys to select");
         System.out.println("1. Start game");
-        System.out.println("2. Leaderboard");
-        System.out.println("3. Multiplayer");
+        System.out.println("2. Custom");
+        System.out.println("3. Leaderboard");
         System.out.println("4. Exit");
     }
 
@@ -21,6 +21,7 @@ public class Interface {
     public static void printLeaderboard(){
         clearScreen();
         HandleFile.readFile("file.txt");
+        System.out.println("Press any key to continue");
     }
 
     public static void printGameScreen(){

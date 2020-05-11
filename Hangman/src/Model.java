@@ -11,9 +11,7 @@ public class Model {
         _answer = answerIn;
     }
 
-    public static Integer getAnswerLength(){
-        return _answer.length();
-    }
+
 
     public static ArrayList<Character> _charGuess = new ArrayList<Character>();;
 
@@ -30,5 +28,9 @@ public class Model {
     public static String _infoForUser = "";
 
     public static Integer _wrongGuessesAmount = 0;
+
+    public static Integer customMinLength = 1;
+
+    public static Integer customMaxLength = 12;
 
 }
