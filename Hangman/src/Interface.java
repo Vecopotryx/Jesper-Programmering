@@ -33,7 +33,7 @@ public class Interface {
 
     public static void printLeaderboard(){
         clearScreen();
-        HandleFile.readFile("file.txt");
+        HandleFile.readFile("leaderboard.txt");
         System.out.println("Press any key to continue");
     }
 

@@ -53,7 +53,7 @@ public class GameControl {
         System.out.print("Enter name: ");
         String name = Input.getStringInput();
         try{
-            HandleFile.writeToFile("file.txt", name + " - " + Model._wrongGuessesAmount + " wrong guesses");
+            HandleFile.writeToFile("leaderboard.txt", name + " - " + Model._wrongGuessesAmount + " wrong guesses");
 
         } catch(Exception E) {
             System.out.println("An error occurred");
