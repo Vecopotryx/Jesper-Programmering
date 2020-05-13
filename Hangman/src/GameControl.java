@@ -8,7 +8,7 @@ public class GameControl {
         populateArray();
         while(true){
             updateDisplayWord();
-            if(Model._displayWord.equals(Model.get_answer())){
+            if(Model._displayWord.equals(Model.get_answer().toLowerCase())){
                 victoryScreen();
                 break;
             } else if(Model._wrongGuessesAmount == 6) {
@@ -105,7 +105,7 @@ public class GameControl {
      */
     public static void gameScreen(){
         Interface.printGameScreen();
-        String stringIn = Input.getStringInput();
+        String stringIn = Input.getStringInput().toLowerCase();
         if(stringIn.length() > 1){
             Model._infoForUser = "This application only supports entering a valid char";
         } else {
@@ -135,7 +135,7 @@ public class GameControl {
         for(int i = 0; i < Model._answerArray.size(); i++){
             boolean isYes = false;
             for(int c = 0; c < Model._charGuess.size(); c++)
-                if(Model.get_answer().toCharArray()[i] == Model._charGuess.get(c)){
+                if(Model.get_answer().toLowerCase().toCharArray()[i] == Model._charGuess.get(c)){
                     Model._displayWord += Model._charGuess.get(c) + "";
                     isYes = true;
                 }
@@ -197,7 +197,7 @@ public class GameControl {
      * Populates the _answerArray with the contents of the _answer string. Useful in order to simplify comparing guesses with the answer.
      */
     public static void populateArray(){
-        for(char c : Model.get_answer().toCharArray()) {
+        for(char c : Model.get_answer().toLowerCase().toCharArray()) {
             Model._answerArray.add(c);
         }
     }
